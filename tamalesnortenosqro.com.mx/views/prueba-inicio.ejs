@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamales norteños</title>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Materialized Compiled and minified CSS -->
+    <link rel="stylesheet" href="css/materialize.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="tamales-nav">
+        <div class="tamales-logo">
+            <img src="img/tamales-logo.jpeg" alt="logo" />
+        </div>
+        <div class="tamales-nav-content">
+            <div class="tamales-nav-content-up">
+                <a href="/inicio">Página de inicio</a>
+                <a>Bienvenido, <%- usuario %></a>
+            </div>
+            <div class="tamales-nav-content-pagedivider">
+                <hr>
+            </div>
+            <div class="tamales-nav-content-down">
+                <a href="#tamales-promociones">Promociones</a>
+                <a href="#tamales-nuestros-sabores">Nuestros sabores</a>
+                <a>Entregas</a>
+            </div>
+        </div>
+    </div>
+    <div id="tamales-hero" class="tamales-hero" style="background-image: url('img/tamales-inicio.jpg');">
+        <div class="tamales-hero-text">
+            <h1 class="tamales-hero-titulo">Los famosos tamales del norte en Querétaro</h1>
+            <h2 class="tamales-hero-entregas">Entregas a domicilio</h2>
+            <a href="/compra01">
+                <button type="button" class="tamales-hero-button">Ordene aquí</button>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div id="tamales-promociones" class="tamales-promociones"
+        style="background-image: url('img/tamales-promocion-1.jpg');">
+        <div class="tamales-promociones-text">
+            <h4 class="tamales-promociones-text-cabecera"> En la compra de 20 tamales consigue</h4>
+            <h4 class="tamales-promociones-text-cantidad"> 20% </h4>
+            <h4> de descuento</h4>
+            <h4> en tu siguiente compra</h4>
+        </div>
+    </div>
+    <br>
+    <div id="tamales-nuestros-sabores" class="tamales-nuestros-sabores">
+        <div class="tamales-nuestros-sabores-primer-titulo">
+            <h1> Nuestros diferentes sabores</h1>
+        </div>
+        <div class="tamales-nuestros-sabores-titulos-row-1">
+            <div class="tamales-nuestros-sabores-titulos-row-1-izq">
+                <h4> Dulce </h4>
+            </div>
+            <div class="tamales-nuestros-sabores-titulos-row-1-der">
+                <h4> Colorado </h4>
+            </div>
+        </div>
+        <div class="tamales-nuestros-sabores-content-row-1">
+            <div class="tamales-nuestros-sabores-content-imagen-izq-row-1">
+                <img src="img/tamales-sabor-1.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-izq-row-1">
+                <p>Sin chile. Tamal con pasas, coco y naranja, sin colorantes </p>
+            </div>
+            <div class="tamales-nuestros-sabores-content-imagen-der-row-1">
+                <img src="img/tamales-sabor-4.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-der-row-1">
+                <p>Picante intermedio. Masa hidratada, con un ligero color rojizo a consecuencia del relleno de carne de
+                    cerdo desmenuzado y guisado con chile guajillo. </p>
+            </div>
+        </div>
+        <div class="tamales-nuestros-sabores-titulos-row-1">
+            <div class="tamales-nuestros-sabores-titulos-row-2-izq">
+                <h4> Verde de pollo </h4>
+            </div>
+            <div class="tamales-nuestros-sabores-titulos-row-2-der">
+                <h4> Rajas </h4>
+            </div>
+        </div>
+        <div class="tamales-nuestros-sabores-content-row-1">
+            <div class="tamales-nuestros-sabores-content-imagen-izq-row-1">
+                <img src="img/tamales-sabor-2.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-izq-row-1">
+                <p>Sin chile. Masa delgada, rellena del guiso clásico del centro del país, pollo desmenuzado en
+                    salsa verde. </p>
+            </div>
+            <div class="tamales-nuestros-sabores-content-imagen-der-row-1">
+                <img src="img/tamales-sabor-5.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-der-row-1">
+                <p>Muy picoso. Masa rellena de rajas escabeche con queso panela. </p>
+            </div>
+        </div>
+        <div class="tamales-nuestros-sabores-titulos-row-1">
+            <div class="tamales-nuestros-sabores-titulos-row-3-izq">
+                <h4> Chicharrón </h4>
+            </div>
+            <div class="tamales-nuestros-sabores-titulos-row-3-der">
+                <h4> Frijoles Norteños </h4>
+            </div>
+        </div>
+        <div class="tamales-nuestros-sabores-content-row-1">
+            <div class="tamales-nuestros-sabores-content-imagen-izq-row-1">
+                <img src="img/tamales-sabor-6.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-izq-row-1">
+                <p>Sin chile. Tamal de masa muy delgada relleno de un guiso de chicharrón tipo carnitas.</p>
+            </div>
+            <div class="tamales-nuestros-sabores-content-imagen-der-row-1">
+                <img src="img/tamales-sabor-3.png" alt="sabor1" />
+            </div>
+            <div class="tamales-nuestros-sabores-content-texto-der-row-1">
+                <p>Sin chile. Masa delgada rellena de frijoles norteños (guisado con chile guajillo) y queso panela.
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/materialize.js"></script>
+</body>
+
+</html>

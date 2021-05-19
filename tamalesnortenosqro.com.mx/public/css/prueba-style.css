@@ -1,0 +1,533 @@
+
+body{
+    margin:unset;
+}
+a{
+    font-family: sans-serif;
+    color: #7E9920 !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px !important;
+}
+h1 {
+    font-family: fantasy;
+    font-size: 48px;
+    font-family: 'Anton', sans-serif;
+}
+h2 {
+    font-family: cursive; 
+    font-size: 48px;
+    font-family: 'Catamaran', sans-serif;
+}
+h3 {
+    font-family: sans-serif;
+    color: #7E9920;
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px !important;
+}
+h4 {
+    font-family: sans-serif;
+    /* color:#1b1d1e; */
+    color:white;
+    font-family: 'Catamaran', sans-serif;
+}
+ hr {
+    border: 1.2px solid #7E9920;
+} 
+p {
+    font-family: sans-serif;
+    text-align: justify;
+    color:#1b1d1e;
+}
+
+
+
+
+
+/* ---------------------- NavBar ---------------------- */
+.tamales-nav {
+    display: flex;
+    margin-top: 20px;
+}
+.tamales-nav .tamales-logo {
+    margin-left: 50px;
+}
+.tamales-nav .tamales-logo img {
+    height: 170px;
+    width: 230px;
+}
+.tamales-nav .tamales-nav-content {
+    width: 85%;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+.tamales-nav .tamales-nav-content .tamales-nav-content-up{
+    display: flex;
+    justify-content: flex-end;
+}
+.tamales-nav .tamales-nav-content .tamales-nav-content-down{
+    display: flex;
+    justify-content: flex-end;
+}
+.tamales-nav .tamales-nav-content .tamales-nav-content-up a,
+.tamales-nav .tamales-nav-content .tamales-nav-content-down a{
+    padding-left: 90px;
+}
+.tamales-nav .tamales-nav-content h3 {
+    margin-left: 40px;
+}
+.tamales-nav a{
+    text-decoration: none;
+}
+/* ---------------------- Fin de NavBar ---------------------- */
+
+
+
+/* ---------------------- Index.html ---------------------- */
+
+/* Hero */
+.tamales-hero .tamales-hero-text{
+    text-align: right;
+    margin-right: 50px;
+}
+.tamales-hero .tamales-hero-text button{
+    background-color: #AFC600;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 20%;
+    height: 100px;
+}
+.tamales-hero {
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+    background-color: rgb(230,133,17,0.6);
+    background-blend-mode: soft-light;
+    background-size: 100%;
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+}
+.tamales-hero .tamales-hero-text .tamales-hero-titulo{
+    padding-top: 150px;
+}
+.tamales-hero .tamales-hero-text .tamales-hero-entregas{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+
+/* Promociones */
+.tamales-promociones{
+    background-color: rgb(0,0,0,.5);
+    background-blend-mode: overlay;
+    background-size: 100%;
+    height: 748px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+}
+.tamales-promociones .tamales-promociones-text {
+    text-align: center;
+}
+
+.tamales-promociones .tamales-promociones-text h4{
+    font-size: 48px;
+}
+
+.tamales-promociones .tamales-promociones-text .tamales-promociones-text-cabecera {
+    padding-top: 5%;
+}
+
+
+
+/* Nuestros sabores */
+
+.tamales-nuestros-sabores-primer-titulo {
+    text-align: center;
+    padding-top: 3%;
+    color: white;
+}
+.tamales-nuestros-sabores {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+}
+
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-1{
+    display: flex;
+    margin-bottom: -1%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-content-row-1{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-1-izq,
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-1-der{
+    width: 50%
+}
+.tamales-nuestros-sabores img {
+    height: 150px;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-1-izq{
+    position: relative;
+    left: 16.5%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-1-der{
+    position: relative;
+    left: 0.5%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-2-izq{
+    position: relative;
+    left: 14.5%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-2-der{
+    position: relative;
+    left: 40%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-3-izq{
+    position: relative;
+    left: 15.5%;
+}
+.tamales-nuestros-sabores .tamales-nuestros-sabores-titulos-row-3-der{
+    position: relative;
+    left: 40%;
+}
+
+.tamales-nuestros-sabores-content-texto-izq-row-1,
+.tamales-nuestros-sabores-content-texto-der-row-1 {
+    width: 100%;
+}
+
+
+
+/* Entregas */
+
+.tamales-entregas {
+    height: 548px;
+    background-color: #F5BD7A;
+    margin-top: -3%;
+}
+
+.tamales-entregas .tamales-entregas-titulo {
+    text-align: center;
+}
+.tamales-entregas .tamales-entregas-seleccionador {
+    margin-left: 45%;
+    width:15%;
+    height: 5%;
+}
+
+/* ---------------------- Fin de Index.html ---------------------- */
+
+/* ---------------------- usuarioNoReg-01.html ---------------------- */
+
+.tamales-usuarioNoRegistrado-01 {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+}
+.tamales-usuarioNoRegistrado-01 .tamales-usuarioNoRegistrado-01-titulo {
+    padding-top: 10%;
+    padding-bottom: 2%;
+    color: white;
+}
+.tamales-usuarioNoRegistrado-01 .tamales-usuarioNoRegistrado-01-descripcion {
+    padding-bottom: 2%;
+}
+.tamales-usuarioNoRegistrado-01 button{
+    background-color: #AFC600;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 15%;
+    height: 80px;
+}
+
+/* ----------------------Fin usuarioNoReg-01.html ---------------------- */
+
+/* ----------------------usuarioNoReg-02.html ---------------------- */
+.tamales-usuarioNoRegistrado-02-inst {
+    padding-top: 1%;
+    color: white;
+}
+.tamales-usuarioNoRegistrado-02 {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 850px;
+}
+
+.tamales-usuarioNoRegistrado-02 .tamales-usuarioNoRegistrado-02-formulario-submit{
+    background-color: #AFC600;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 12%;
+    height: 70px;
+}
+.tamales-usuarioNoRegistrado-02-formulario form {
+    display: flex;
+    flex-direction: column;
+}
+.tamales-usuarioNoRegistrado-02-formulario-box input, 
+.tamales-usuarioNoRegistrado-02-formulario-box select{
+    width: 30%;
+    border-radius: 25px;
+    height: 25px;
+    text-align: center;
+    text-align-last:center;
+}
+.tamales-usuarioNoRegistrado-02-formulario-box textarea:focus, 
+.tamales-usuarioNoRegistrado-02-formulario-box input:focus{
+    outline: none;
+}
+
+.tamales-usuarioNoRegistrado-02-formulario-button {
+    padding-top: 1%;
+    width: 100%;
+}
+.tamales-usuarioNoRegistrado-02-formulario form label{
+    padding-top: 1%;
+    color: #7D9A1F;
+}
+/* ----------------------Fin usuarioNoReg-02.html ---------------------- */
+
+/* ---------------------- usuarioNoReg-03.html ---------------------- */
+
+.tamales-usuarioNoRegistrado-03 {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+}
+.tamales-usuarioNoRegistrado-03 .tamales-usuarioNoRegistrado-03-titulo {
+    padding-top: 10%;
+    padding-bottom: 2%;
+    color: white;
+}
+.tamales-usuarioNoRegistrado-03 .tamales-usuarioNoRegistrado-03-descripcion {
+    padding-bottom: 2%;
+}
+/* ---------------------- Fin usuarioNoReg-03.html ---------------------- */
+
+/* ---------------------- login.html ---------------------- */
+.tamales-login {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+}
+.tamales-login .tamales-login-titulo {
+    padding-top: 6%;
+    padding-bottom: 2%;
+    color: white;
+}
+
+/* Se utiliza el css de usuarioNoReg02 para el form del login  */
+
+.tamales-login .tamales-usuarioNoRegistrado-02-formulario-submit{
+    background-color: white;
+    border: none;
+    color: #AFC600;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 12%;
+    height: 70px;
+}
+
+.tamales-login .tamales-usuarioNoRegistrado-02-formulario-submit{
+    background-color: white;
+    border: none;
+    color: #AFC600;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 12%;
+    height: 70px;
+    margin-top: 1%;
+}
+.tamales-login h4 {
+    font-size: 24px
+}
+.tamales-login .tamales-login-button-registrar{
+    background-color: #AFC600;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 15%;
+    height: 80px;
+}
+
+/* ---------------------- Fin login.html ---------------------- */
+
+/* ---------------------- compra01.html ---------------------- */
+
+.tamales-compra01 {
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+    background-color: rgb(239,146,3,0.9);
+    background-blend-mode: soft-light;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 55%;
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+}
+.tamales-compra01 .tamales-compra01-titulo {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: white;
+}
+.tamales-compra01-button01{
+    background-color: #E9241F;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 15%;
+    height: 80px;
+}
+
+.tamales-compra01-button02{
+    background-color: #AFC600;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 55px;
+    font-family: Catamaran;
+    width: 15%;
+    height: 80px;
+}
+.tamales-compra01 h4{
+    font-size: 24px;
+    padding: 40px;
+    text-align: left;
+}
+
+.tamales-compra01-politicas {
+    display: flex;
+}
+
+.tamales-compra01-politicas .tamales-compra01-politicas-texto {
+    width:50%;
+    padding-bottom: 40px;
+}
+
+/* ---------------------- Fin compra01.html ---------------------- */
+
+/* ---------------------- compra02.html ---------------------- */
+
+.tamales-compra02 {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 900px;
+}
+.tamales-compra02 .tamales-compra02-titulo{
+    font-size: 24px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: white;
+}
+.tamales-compra02 .tamales-compra02-descripcion{
+    font-size: 20px;
+    padding-bottom: 2%;
+    color: white;
+}
+.tamales-compra02 img {
+    height: 150px;
+}
+.tamales-compra02 .tamales-compra02-productos{
+    display: flex;
+    margin-left: 20%;
+}
+
+
+/* ---------------------- Fin compra02.html ---------------------- */
+
+/* ---------------------- compra03.html ---------------------- */
+
+.tamales-compra03 {
+    background-color: #F5BD7A;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: -30px;
+    height: 748px;
+}
+.tamales-compra03 h1{
+    font-size: 36px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: white;
+}
+
+/* ---------------------- Fin compra03.html ---------------------- */

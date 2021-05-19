@@ -6,40 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamales norteños</title>
+    <!-- Custom css -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Materialized Compiled and minified CSS -->
+    <link rel="stylesheet" href="css/materialize.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <header>
-        <div class="tamales-header">
-            <div class="tamales-logo">
-                <img src="setup/img/tamales-logo.jpeg" alt="logo" />
+    <div class="tamales-nav">
+        <div class="tamales-logo">
+            <img src="setup/img/tamales-logo.jpeg" alt="logo" />
+        </div>
+        <div class="tamales-nav-content">
+            <div class="tamales-nav-content-up">
+                <a href="index.html">Página de inicio</a>
+                <a>Iniciar sesión</a>
             </div>
-            <div class="tamales-header-content">
-                <div class="tamales-header-content-up">
-                    <h3>Página de inicio</h3>
-                    <h3>Iniciar sesión</h3>
-                </div>
-                <div class="tamales-header-content-pagedivider">
-                    <hr>
-                </div>
-                <div class="tamales-header-content-down">
-                    <h3>Promociones</h3>
-                    <h3>Nuestros sabores</h3>
-                    <h3>Entregas</h3>
-                </div>
+            <div class="tamales-nav-content-pagedivider">
+                <hr>
+            </div>
+            <div class="tamales-nav-content-down">
+                <a href="#tamales-promociones">Promociones</a>
+                <a href="#tamales-nuestros-sabores">Nuestros sabores</a>
+                <a>Entregas</a>
             </div>
         </div>
-    </header>
-    <div class="tamales-hero" style="background-image: url('setup/img/tamales-inicio.jpg');">
+    </div>
+    <div id="tamales-hero" class="tamales-hero" style="background-image: url('setup/img/tamales-inicio.jpg');">
         <div class="tamales-hero-text">
             <h1 class="tamales-hero-titulo">Los famosos tamales del norte en Querétaro</h1>
             <h2 class="tamales-hero-entregas">Entregas a domicilio</h2>
             <button type="button" class="tamales-hero-button">Ordene aquí</button>
         </div>
     </div>
-    <div class="tamales-promociones" style="background-image: url('setup/img/tamales-promocion-1.jpg');">
+    <br>
+    <div id="tamales-promociones" class="tamales-promociones"
+        style="background-image: url('setup/img/tamales-promocion-1.jpg');">
         <div class="tamales-promociones-text">
             <h4 class="tamales-promociones-text-cabecera"> En la compra de 20 tamales consigue</h4>
             <h4 class="tamales-promociones-text-cantidad"> 20% </h4>
@@ -47,7 +54,8 @@
             <h4> en tu siguiente compra</h4>
         </div>
     </div>
-    <div class="tamales-nuestros-sabores">
+    <br>
+    <div id="tamales-nuestros-sabores" class="tamales-nuestros-sabores">
         <div class="tamales-nuestros-sabores-primer-titulo">
             <h1> Nuestros diferentes sabores</h1>
         </div>
@@ -87,7 +95,7 @@
                 <img src="setup/img/tamales-sabor-2.png" alt="sabor1" />
             </div>
             <div class="tamales-nuestros-sabores-content-texto-izq-row-1">
-                <p>Sin chile. Masa delgada, rellena del guiso clásico del del centro del país, pollo desmenuzado en
+                <p>Sin chile. Masa delgada, rellena del guiso clásico del centro del país, pollo desmenuzado en
                     salsa verde. </p>
             </div>
             <div class="tamales-nuestros-sabores-content-imagen-der-row-1">
@@ -121,19 +129,10 @@
             </div>
         </div>
     </div>
-    <div class="tamales-entregas">
-        <h2 class="tamales-entregas-titulo">Entérate de nuestras fechas y horas
-            de entrega por zona</h2>
-        <select class="tamales-entregas-seleccionador">
-            <option value="0">Elegir colonia:</option>
-            <option value="1">Centro Sur</option>
-            <option value="2">El Campanario</option>
-            <option value="3">El Refugio</option>
-            <option value="4">Zibatá</option>
-            <option value="5">Otra</option>
-        </select>
-    </div>
+    <br>
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/materialize.js"></script>
 </body>
 
 </html>

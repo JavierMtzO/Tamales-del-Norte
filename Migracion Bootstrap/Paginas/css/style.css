@@ -1,0 +1,299 @@
+a{
+    
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    font-family: 'Anton', sans-serif;
+}
+h2 {
+    font-family: 'Catamaran', sans-serif;
+}
+h3 {
+    font-family: 'Roboto', sans-serif;
+}
+h4 {
+    font-family: 'Catamaran', sans-serif;
+}
+ hr {
+    border: 1.2px solid #7E9920;
+} 
+p {
+    font-family: 'Catamaran';
+}
+
+/* ---------------------- Página de inicio ------------------- */
+
+/* -- Hero -- */
+
+.tamales-hero {
+    height: 548px;
+    background-color: #F5BD7A;
+    border-radius: 25px;
+    background-color: rgb(230,133,17,0.6);
+    background-blend-mode: soft-light;
+    background-size: cover;
+    color: white;
+}
+.tamales-hero-context {
+    padding-top: 12%;
+}
+
+.tamales-hero-text {
+    padding-top: 3%;
+}
+
+.tamales-hero-text button {
+    background-color: #AFC600;
+    height: 80px;
+    border-radius: 55px;
+    width: 170px;
+    font-size: 20px;
+}
+
+.tamales-productos {
+    margin-top: 3%;
+    background-color: #F5BD7A;
+    border-radius: 25px;
+}
+
+.tamales-productos h1 {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.tamales-productos .tamales-productos-fila img{
+    width: 50%;
+}
+.tamales-productos .tamales-productos-fila{
+    width: 33.333%;
+    text-align: center;
+}
+.tamales-productos .tamales-productos-fila p{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.tamales-promociones img
+{
+    height: 548px;
+    border-radius: 25px;
+    filter: contrast(35%);
+}
+
+
+/* ---------------------- Páginas de registro ------------------- */
+
+.tamales-usuarioNoRegistrado-01,
+.tamales-usuarioNoRegistrado-03,
+.tamales-login{
+    height: 548px;
+    background-color: #F5BD7A;
+    border-radius: 25px;
+    color: white;
+}
+
+.tamales-usuarioNoRegistrado-01-text {
+    margin-bottom: 3%;
+}
+
+.tamales-usuarioNoRegistrado-02 {
+    height: 548px;
+    background-color: #F5BD7A;
+    border-radius: 25px;
+}
+.tamales-usuarioNoRegistrado-02 form{
+    width: 80%;
+}
+.tamales-usuarioNoRegistrado-02 input{
+    width: 270px;
+}
+
+.tamales-usuarioNoRegistrado-02-button{
+    background-color: #AFC600;
+    height: 80px;
+    border-radius: 55px;
+    width: 150px !important;
+    font-size: 20px;
+    margin-top: 4%;
+}
+.tamales-usuarioNoRegistrado-03 button {
+    margin-top: 3%;
+}
+
+.tamales-login input{
+    width: 270px;
+}
+
+.tamales-login .tamales-login-button input{
+    margin: 5%;
+    background-color: white;
+    height: 50px;
+    border-radius: 55px;
+    width: 150px;
+    font-size: 20px;
+    color: #AFC600;
+}
+
+.tamales-login .tamales-login-button-registrar{
+    margin: 5%;
+    background-color: #AFC600;
+    height: 50px;
+    border-radius: 55px;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+}
+/* ---------------------- Páginas de compra ------------------- */
+
+.tamales-compra01 {
+    background-color: #71450F;
+    opacity: 1;
+    background-position: 10px -180px;
+    border-radius: 25px;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    color: white;
+}
+
+.tamales-compra01-text {
+    padding: 5%;
+}
+
+.tamales-compra01-button01{
+    margin-top: 5%;
+    background-color: #E9241F;
+    height: 80px;
+    border-radius: 55px;
+    width: 170px;
+    font-size: 20px;
+}
+
+.tamales-compra01-button02{
+    margin-top: 5%;
+    background-color: #AFC600;
+    height: 80px;
+    border-radius: 55px;
+    width: 170px;
+    font-size: 20px;
+}
+.tamales-compra01-botones {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.tamales-compra02 {
+    background-color: #F5BD7A;
+    border-radius: 25px;
+}
+
+
+.tamales-compra02-productos img{
+    width: 180px
+}
+.tamales-compra02-productos-fila h4 {
+    margin-top: 2%;
+}
+
+.tamales-compra02-button01{
+    background-color: #E9241F;
+    height: 80px;
+    border-radius: 55px;
+    width: 170px;
+    font-size: 20px;
+}
+
+.tamales-compra02-button02{
+    background-color: #AFC600;
+    height: 80px;
+    border-radius: 55px;
+    width: 170px;
+    font-size: 20px;
+}
+.tamales-compra03 {
+    background-color: #F5BD7A;
+    border-radius: 25px;
+}
+.tamales-compra03-botones {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+.tamales-compra03-titulo {
+    text-align: center;
+    color: white;
+    padding-top: 2%;
+}
+
+.tamales-compra03 h3{
+    color:white;
+}
+
+.tamales-compra03-entregas {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.tamales-compra04 {
+    background-color: #F5BD7A;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+}
+.tamales-compra04-texto {
+    padding-top: 2%;
+}
+
+.tamales-compra04-botones {
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+/* ---------------------- Entregas ------------------- */
+
+.tamales-entregas {
+    height: 735px;
+    background-color: #F5BD7A;
+    margin-top: -3%;
+    border-radius: 25px;
+    background-blend-mode: soft-light;
+    background-size: cover;
+}
+
+.tamales-entregas .tamales-entregas-titulo {
+    text-align: center;
+    color:white;
+}
+.tamales-entregas .tamales-entregas-seleccionador {
+    margin-left: 45%;
+    width:15%;
+    height: 5%;
+}
+.tamales-entregas .tamales-entregas-subtitulo{
+    text-align: center;
+    /*font-family: fantasy; */
+    font-size: 20px;    
+}
+
+.tamales-entregas .tamales-entregas-texto{
+    text-align: left;
+    font-family: monospace; 
+    font-size: 15px;  
+}
+.tamales-entregas .tamales-entregas-tabla{
+    text-align: center;
+    margin-left: 15%;
+}
+.tamales-entregas .tamales-entregas-estilo1{
+    background: rgba(4, 245, 152, 0.3); 
+    border: 1px solid rgba(200, 100, 0, 0.3);
+    }
+.tamales-entregas .tamales-entregas-estilo2{
+background: rgba(232, 248, 4, 0.3); 
+border: 1px solid rgba(200, 100, 0, 0.3);
+}
+.tamales-entregas .tamales-entregas-estilo3{
+    background: rgba(4, 126, 59, 0.3); 
+    border: 1px solid rgba(200, 100, 0, 0.3);
+    }

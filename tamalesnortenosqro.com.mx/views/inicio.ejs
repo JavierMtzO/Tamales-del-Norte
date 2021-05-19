@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </link>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Tamales norteños</title>
+</head>
+
+<body>
+    <div class="container tamales-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <a class="navbar-brand tamales-navbar-logo" href="#">
+                <img src="img/tamales-logo.jpeg" width="220" height="160" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="row collapse navbar-collapse nav justify-content-end gx-5" id="navbarNav">
+                <ul class="navbar-nav tamales-navbar-texto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/inicio">
+                            <h4>Página de inicio</h4><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <h4> Bienvenido, <%- usuario %> </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="container tamales-hero" style="background-image: url('img/tamales-inicio.jpg');">
+        <div class="d-flex align-items-end flex-column tamales-hero-context">
+            <div class="tamales-hero-text">
+                <h1 class="tamales-hero-titulo">Los famosos tamales del norte en Querétaro</h1>
+            </div>
+            <div class="tamales-hero-text">
+                <h2 class="tamales-hero-entregas">Entregas a domicilio</h2>
+            </div>
+            <div class="tamales-hero-text">
+                <a href="/compra01">
+                    <button type="button" class="btn btn-success tamales-hero-button">Ordene aquí</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container tamales-productos">
+
+        <h1> Nuestros productos </h1>
+
+        <div class="d-flex flex-wrap justify-content-center container tamales-productos-columnas">
+
+            <% for (let producto of productos) {%>
+            <div class="tamales-productos-fila">
+                <h4> <%= producto.nombreProducto %> </h4>
+                <img src="<%= producto.imagenProducto %>" alt="sabor1" />
+                <p> <%= producto.descripcion %></p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container tamales-promociones">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <% for (let promocion of promociones) {%>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%= promocion.idPromocion - 2000 %>"></li>
+                <% } %>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="img/tamales-promocion-1.jpg" alt="First slide" width="765"
+                        height="548">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>¡Revisa nuestras promociones activas!</h1>
+                        <p> Solo por tiempo limitado</p>
+                    </div>
+                </div>
+                <% for (let promocion of promociones) {%>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="<%= promocion.imagenPromocion%>">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <%= promocion.descripcion%> </h3>
+                        <a href="/registro">
+                            <button type="button" class="btn btn-success tamales-hero-button">Ordene aquí</button>
+                        </a>
+                    </div>
+                </div>
+                <% } %>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

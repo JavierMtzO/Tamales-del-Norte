@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamales norteños</title>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Materialized Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="css/materialize.css"> -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="tamales-nav">
+        <div class="tamales-logo">
+            <img src="img/tamales-logo.jpeg" alt="logo" />
+        </div>
+        <div class="tamales-nav-content">
+            <div class="tamales-nav-content-up">
+                <a href="index.html">Página de inicio</a>
+                <a>Iniciar sesión</a>
+            </div>
+            <div class="tamales-nav-content-pagedivider">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="tamales-usuarioNoRegistrado-02">
+        <div class="tamales-usuarioNoRegistrado-02-inst">
+            <h1>Ingrese sus datos para su cuenta nueva</h1>
+        </div>
+        <div class="tamales-usuarioNoRegistrado-02-formulario">
+            <form action="registrar" method="POST">
+                <label for="nombre"> Nombre </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="nombre" required>
+                </div>
+
+                <label for="apellidos"> Apellidos </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="apellidos" required>
+                </div>
+
+                <label for="ciudad">Ciudad</label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <select>
+                        <option value="Queretaro" selected>Querétaro</option>
+                    </select>
+                </div>
+
+                <label for="telefono"> Teléfono </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="tel" name="telefono" required>
+                </div>
+
+                <label for="colonia">Colonia</label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <select>
+                        <option value="Tejeda">Tejeda</option>
+                        <option value="Jurica">Jurica</option>
+                        <option value="El Refugio">El Refugio</option>
+                        <option value="Juriquilla" selected>Juriquilla</option>
+                        <option value="La Vista">La Vista</option>
+                        <option value="Sonterra">Sonterra</option>
+                        <option value="Balvanegra">Balvanegra</option>
+                        <option value="Zibata">Zibatá</option>
+                        <option value="Campanario">Campanario</option>
+                        <option value="Cimatario">Cimatario</option>
+                    </select>
+                </div>
+
+                <label for="direccion"> Dirección de entrega </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="direccion" required>
+                </div>
+
+                <label for="referencia"> Referencia de la dirección de entrega </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="referencia">
+                </div>
+
+                <label for="email"> Correo electrónico </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="email" name="email" required>
+                </div>
+
+                <label for="password"> Contraseña para su nueva cuenta </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="password" name="password" required>
+                </div>
+
+                <div class="tamales-usuarioNoRegistrado-02-formulario-button">
+                    <input class="tamales-usuarioNoRegistrado-02-formulario-submit" type="submit"
+                        name="registro-completo" value="Registrarse">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/materialize.js"></script>
+</body>
+
+</html>

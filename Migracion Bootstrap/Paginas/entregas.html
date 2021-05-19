@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </link>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Tamales norteños</title>
+</head>
+
+<body>
+    <div class="container tamales-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <a class="navbar-brand tamales-navbar-logo" href="#">
+                <img src="img/tamales-logo.jpeg" width="220" height="160" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="row collapse navbar-collapse nav justify-content-end gx-5" id="navbarNav">
+                <ul class="navbar-nav tamales-navbar-texto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/inicio">
+                            <h4>Página de inicio</h4><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <h4> Bienvenido, <%- usuario %> </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+    </div>
+    <br>
+    <br>
+    <div class="container tamales-entregas" >
+    <div class="tamales-entregas">
+        <h2 class="tamales-entregas-titulo">Entérate de nuestras fechas y horas
+            de entrega por zona</h2>
+            <p class="tamales-entregas-subtitulo">
+                Los pedidos a domicilio son manejados por días las distintas zonas de la ciudad, tal como se muestra a continuación: 
+            </p>
+            <br>
+            <table class="tamales-entregas-tabla">
+
+                <tr class="tamales-entregas-estilo3">
+                  <th>Horario</th>
+                  <th>Lunes</th>
+                  <th>Martes</th>
+                  <th>Miércoles</th>
+                  <th>Jueves</th>
+                  <th>Viernes</th>
+                  <th>Sábado</th>
+                </tr>
+              
+                <tr>
+                  <th rowspan="6" class="tamales-entregas-estilo1">5pm - 7pm</th>
+                  <td>Libre</td>
+                  <td>Libre</td>
+                  <td>Jurica</td>
+                  <td>Refugio</td>
+                  <td>Sonterra</td>
+                  <td>Jurica</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Juriquilla</td>
+                    <td>La Vista</td>
+                    <td>Balvanegra</td>
+                    <td>Juriquilla</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Zibatá</td>
+                    <td>Zaquia</td>
+                    <td>Tejeda</td>
+                    <td>Refugio</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Zibatá</td>
+                    <td>Vista Real</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Mirador</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Milenio</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="tamales-entregas-estilo2">7pm - 8pm</th>
+                    <td>Campanario</td>
+                    <td>Campanario</td>
+                    <td>Campanario</td>
+                    <td>Campanario</td>
+                    <td>Campanario</td>
+                    <td>Campanario</td>
+                </tr>
+              </table>
+              <br>
+              <br>
+              <p class="tamales-entregas-texto">
+                  *Libre: Pedido mínimo 30 piezas.
+            </p>
+            <p class="tamales-entregas-texto">
+                *Miércoles a Sábado: Pedido mínimo por cliente 12 piezas.            
+            </p>
+            <p class="tamales-entregas-texto">
+                *Si algún cliente realiza un pedido fuera de su día de reparto, el pedido debe ser mínimo de 30 piezas o se realizará cargo por envío.
+            </p>
+            <br>
+            <br>
+            <p class="tamales-entregas-subtitulo">
+                Selecciona a continuación el día de entrega para tu pedido
+            </p>
+        <select class="tamales-entregas-seleccionador">
+            <option value="0">Elegir día:</option>
+            <option value="1">Lunes</option>
+            <option value="2">Martes</option>
+            <option value="3">Miércoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
+            <option value="6">Sábado</option>
+        </select>
+
+
+        </div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

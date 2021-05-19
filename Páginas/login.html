@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamales norteños</title>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Materialized Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="css/materialize.css"> -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="tamales-nav">
+        <div class="tamales-logo">
+            <img src="img/tamales-logo.jpeg" alt="logo" />
+        </div>
+        <div class="tamales-nav-content">
+            <div class="tamales-nav-content-up">
+                <a href="index.html">Página de inicio</a>
+                <a>Iniciar sesión</a>
+            </div>
+            <div class="tamales-nav-content-pagedivider">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="tamales-login">
+        <h1 class="tamales-login-titulo">Ingrese los datos de su cuenta</h1>
+        <div class="tamales-usuarioNoRegistrado-02-formulario">
+            <!-- <% if (error !== false) { %> -->
+            <span style="color: red;"> <%- error %></span>
+            <!-- <% }%> -->
+            <form action="login" method="POST">
+
+                <label for="email"> Correo electrónico </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="email" required>
+                </div>
+
+                <label for="password"> Contraseña </label>
+                <div class="tamales-usuarioNoRegistrado-02-formulario-box">
+                    <input type="text" name="password" required>
+                </div>
+
+                <div class="tamales-login-button">
+                    <input class="tamales-usuarioNoRegistrado-02-formulario-submit" type="submit" name="enviar"
+                        value="Iniciar sesión">
+                </div>
+            </form>
+        </div>
+        <h4> ¿No te has registrado? </h4>
+        <a href="/registro02">
+            <button type="button" class="tamales-login-button-registrar">Registrarse</button>
+        </a>
+    </div>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/materialize.js"></script>
+</body>
+
+</html>

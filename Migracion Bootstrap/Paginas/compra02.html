@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </link>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Tamales norteños</title>
+</head>
+
+<body>
+    <div class="container tamales-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <a class="navbar-brand tamales-navbar-logo" href="#">
+                <img src="img/tamales-logo.jpeg" width="220" height="160" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="row collapse navbar-collapse nav justify-content-end gx-5" id="navbarNav">
+                <ul class="navbar-nav tamales-navbar-texto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/inicio">
+                            <h4>Página de inicio</h4><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <h4> Bienvenido, <%- usuario %> </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="container pt-3 text-center tamales-compra02">
+        <h1 class="tamales-compra02-titulo">Seleccione el número de tamales deseados por sabor</h1>
+        <h4 class="tamales-compra02-descripcion">Pedido mínimo de 15 tamales</h4>
+
+        <div class="d-flex justify-content-around text-center tamales-compra02-productos">
+            <div class="d-flex flex-column tamales-compra02-productos-fila">
+                <h4> Dulce </h4>
+                <img src="img/tamales-sabor-1.png" alt="sabor1" />
+                <input type="number" min="0" name="cantidad-dulce">
+                <h4> Verde de pollo </h4>
+                <img src="img/tamales-sabor-2.png" alt="sabor1" />
+                <input type="number" min="0" name="cantidad-dulce">
+            </div>
+            <div class="d-flex flex-column tamales-compra02-productos-fila">
+                <h4> Chicharrón </h4>
+                <img src="img/tamales-sabor-3.png" alt="sabor1" />
+                <div class="wrapper">
+                    <input type="number" min="0" name="cantidad-dulce">
+                </div>
+                <h4> Colorado </h4>
+                <img src="img/tamales-sabor-4.png" alt="sabor1" />
+                <input type="number" min="0" name="cantidad-dulce">
+            </div>
+            <div class="d-flex flex-column tamales-compra02-productos-fila">
+                <h4> Rajas </h4>
+                <img src="img/tamales-sabor-5.png" alt="sabor1" />
+                <input type="number" min="0" name="cantidad-dulce">
+                <h4> Frijoles norteños </h4>
+                <img src="img/tamales-sabor-6.png" alt="sabor1" />
+                <input type="number" min="0" name="cantidad-dulce">
+            </div>
+        </div>
+        <div class="tamales-compra01-botones">
+            <a href="/inicio">
+                <button type="button" class="btn btn-danger tamales-compra01-button01">Cancelar</button>
+            </a>
+            <a href="/compra02">
+                <button type="button" class="btn btn-success tamales-compra01-button02">Aceptar</button>
+            </a>
+        </div>
+
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
