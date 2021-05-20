@@ -37,4 +37,6 @@ router.post('/compra03', isAuth, tamalesController.postCompra03);
 router.get('/compra04', isAuth, tamalesController.getCompra04);
 router.post('/compra04', isAuth, tamalesController.postCompra04);
 
+router.get('/cliente', isAuth, tamalesController.getCliente);
+
 module.exports = router;

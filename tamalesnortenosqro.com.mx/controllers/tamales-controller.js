@@ -75,7 +75,6 @@ exports.postRegistro02 = (request, response, next) => {
     }
     const cliente = new nuevoCliente(request.body.nombre, request.body.apellidos, request.body.telefono, request.body.direccion, request.body.referencia, request.body.email, idColonia, request.body.password);
     request.session.error = undefined;
-    console.log(cliente);
     cliente.save()
         .then(() => {
             response.render('registro03');
@@ -99,9 +98,11 @@ exports.getLogin = (request, response, next) => {
 };
 let nombre;
 let idCliente;
+let email;
 exports.postLogin = (request, response, next) => {
     request.session.error = undefined;
-    nuevoCliente.fetchOne(request.body.email)
+    email = request.body.email;
+    nuevoCliente.fetchOne(email)
         .then(([rows, fieldData]) => {
             nombre = rows[0].nombre;
             idCliente = rows[0].idCliente;
@@ -319,3 +320,14 @@ exports.postCompra04 = (request, response, next) => {
         usuario: nombre,
     });
 };
+exports.getCliente = (request, response, next) => {
+    nuevoCliente.fetchOne(email)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            response.render('perfilCliente', {
+                usuario: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
