@@ -81,6 +81,17 @@ p {
     filter: contrast(35%);
 }
 
+.tamales-entregas {
+    min-height: 548px;
+    background-color: #F5BD7A;
+    border-radius: 25px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+a#navbarDropdown {
+    display: flex;
+    align-items: center;
+}
 
 /* ---------------------- Páginas de registro ------------------- */
 

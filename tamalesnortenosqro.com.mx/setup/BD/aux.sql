@@ -75,3 +75,5 @@ AND idPedido = 10016
 SELECT horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = 10016
 
 UPDATE pedido SET etiqueta = '20017' WHERE idPedido = 10027;
+
+SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente = 1613

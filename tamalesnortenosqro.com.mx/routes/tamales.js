@@ -10,6 +10,8 @@ router.use('/js', express.static(path.join(__dirname, 'public/js')));
 router.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 const tamalesController = require('../controllers/tamales-controller');
+const usuariosController = require('../controllers/usuarios-controller');
+const compraController = require('../controllers/compra-controller');
 
 router.get('/', tamalesController.get);
 
@@ -18,25 +20,26 @@ router.get('/registro', tamalesController.getRegistro);
 router.get('/registro02', tamalesController.getRegistro02);
 router.post('/registro02', tamalesController.postRegistro02);
 
-router.get('/login', tamalesController.getLogin);
-router.post('/login', tamalesController.postLogin);
+router.get('/login', usuariosController.getLogin);
+router.post('/login', usuariosController.postLogin);
 
-router.get('/logout', tamalesController.logout);
+router.get('/logout', usuariosController.logout);
 
 router.get('/inicio', isAuth, tamalesController.getInicio);
 
-router.get('/compra01', isAuth, tamalesController.getCompra01);
-router.post('/compra01', isAuth, tamalesController.postCompra01);
+router.get('/compra01', isAuth, compraController.getCompra01);
+router.post('/compra01', isAuth, compraController.postCompra01);
 
-router.get('/compra02', isAuth, tamalesController.getCompra02);
-router.post('/compra02', isAuth, tamalesController.postCompra02);
+router.get('/compra02', isAuth, compraController.getCompra02);
+router.post('/compra02', isAuth, compraController.postCompra02);
 
-router.get('/compra03', isAuth, tamalesController.getCompra03);
-router.post('/compra03', isAuth, tamalesController.postCompra03);
+router.get('/compra03', isAuth, compraController.getCompra03);
+router.post('/compra03', isAuth, compraController.postCompra03);
 
-router.get('/compra04', isAuth, tamalesController.getCompra04);
-router.post('/compra04', isAuth, tamalesController.postCompra04);
+router.get('/compra04', isAuth, compraController.getCompra04);
+router.post('/compra04', isAuth, compraController.postCompra04);
 
-router.get('/cliente', isAuth, tamalesController.getCliente);
+router.get('/perfil', isAuth, usuariosController.getPerfil);
+router.get('/pedidos', isAuth, usuariosController.getPedidos);
 
 module.exports = router;

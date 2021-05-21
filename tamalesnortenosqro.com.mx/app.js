@@ -31,7 +31,8 @@ app.use('/compra01', rutasTamales);
 app.use('/compra02', rutasTamales);
 app.use('/compra03', rutasTamales);
 app.use('/compra04', rutasTamales);
-app.use('/cliente', rutasTamales);
+app.use('/perfil', rutasTamales);
+app.use('/pedidos', rutasTamales);
 
 app.use((request, response, next) => {
     console.log('Error 404');

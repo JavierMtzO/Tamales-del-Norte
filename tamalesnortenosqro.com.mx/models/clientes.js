@@ -44,5 +44,8 @@ module.exports = class nuevoCliente {
     static login(correoElectronico, password) {
         return db.execute('SELECT * FROM cliente WHERE ');
     }
+    static fetchPedidos(id) {
+        return db.execute('SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente =  ?', [id]);
+    }
 
 }

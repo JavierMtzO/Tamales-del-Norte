@@ -47,8 +47,8 @@
                             <h4> Bienvenido, <%- usuario %> </h4>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/cliente">Ver Perfil</a>
-                            <a class="dropdown-item" href="#">Ver pedidos</a>
+                            <a class="dropdown-item" href="/perfil">Ver Perfil</a>
+                            <a class="dropdown-item" href="/pedidos">Ver pedidos</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Cerrar sesión</a>
                         </div>
@@ -134,7 +134,68 @@
         </div>
     </div>
 
+    <div id="entregas" class="container tamales-entregas">
+        <div class="container" style="padding: 5%;">
+            <h1 style="color: white; text-align: center;padding-bottom: 2%;"> Entérate de nuestras fechas y horas de
+                entrega por zona </h1>
+            <select id="select-entregas" class="form-control" name="colonia" onchange="changeFunc();">
+                <option value=" 0">Seleccionar colonia de entrega</option>
+                <% for (let distribucion of distribuciones) {%>
+                <option value="<%= distribucion.nombreDeColonia%>"><%= distribucion.nombreDeColonia%>
+                </option>
+                <% } %>
+            </select>
+            <% for (let distribucion of distribuciones) {%>
+            <div style="display: none;" id="<%= distribucion.nombreDeColonia%>">
 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Día de entrega</th>
+                            <th>Rango de inicio</th>
+                            <th>Rango final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3><%= distribucion.diaDeEntrega%></h3>
+                            </td>
+                            <td>
+                                <h3><%= distribucion.horaInicioEntrega%></h3>
+                            </td>
+                            <td>
+                                <h3><%= distribucion.horaFinalEntrega%></h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        function changeFunc() {
+            var selectBox = document.getElementById("select-entregas");
+
+            for (i = 0; i < (selectBox.length); i++) {
+                if ((selectBox.options[i].value) != 0) {
+                    var x = document.getElementById(selectBox.options[i].value);
+                    x.style.display = "none";
+                }
+            }
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var x = document.getElementById(selectedValue);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+        }
+
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
