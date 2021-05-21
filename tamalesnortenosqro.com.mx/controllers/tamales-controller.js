@@ -96,20 +96,17 @@ exports.getLogin = (request, response, next) => {
         titulo: "Iniciar sesion",
     });
 };
-let nombre;
-let idCliente;
 exports.postLogin = (request, response, next) => {
     request.session.error = undefined;
     request.session.email = request.body.email;
     nuevoCliente.fetchOne(request.session.email)
         .then(([rows, fieldData]) => {
-            nombre = rows[0].nombre;
-            idCliente = rows[0].idCliente;
             bcrypt.compare(request.body.password, rows[0].password)
                 .then(doMatch => {
                     if (doMatch) {
                         request.session.isLoggedIn = true;
                         request.session.user = rows[0].nombre;
+                        request.session.idCliente = rows[0].idCliente;
                         return request.session.save(err => {
                             response.redirect('/inicio');
                         });
@@ -135,7 +132,7 @@ exports.getInicio = (request, response, next) => {
             nuevaPromocion.fetchAll()
                 .then(([rowsPromociones, fieldData]) => {
                     response.render('inicio', {
-                        usuario: nombre,
+                        usuario: request.session.user,
                         productos: rowsProductos,
                         promociones: rowsPromociones,
                         titulo: "Tamales norteños"
@@ -147,22 +144,20 @@ exports.getInicio = (request, response, next) => {
 };
 exports.getCompra01 = (request, response, next) => {
     response.render('compra01', {
-        usuario: nombre,
+        usuario: request.session.user,
     });
 };
-var siguiente = true;
-let idPedido;
 exports.postCompra01 = (request, response, next) => {
     if (request.body.aceptar) {
-        siguiente = true;
+        request.session.siguiente = true;
     } else {
-        siguiente = false;
+        request.session.siguiente = false;
     }
-    if (siguiente) {
-        const pedido = new pedidoNuevo(idCliente);
+    if (request.session.siguiente) {
+        const pedido = new pedidoNuevo(request.session.idCliente);
         pedido.save()
             .then(([rows, fieldData]) => {
-                idPedido = rows.insertId;
+                request.session.idPedido = rows.insertId;
                 response.redirect('compra02');
             })
             .catch(err => {
@@ -178,41 +173,38 @@ exports.getCompra02 = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('compra02', {
                 error: request.session.error !== undefined ? request.session.error : false,
-                usuario: nombre,
+                usuario: request.session.user,
                 productos: rows,
                 titulo: "Paso 2 compra"
             });
         })
         .catch(err => console.log(err));
 };
-let total = 0;
-let costoTotal = 0;
-let descripcion = "";
 exports.postCompra02 = (request, response, next) => {
     if (request.body.aceptar) {
-        siguiente = true;
+        request.session.siguiente = true;
     } else {
-        siguiente = false;
+        request.session.siguiente = false;
     }
-    if (siguiente) {
+    if (request.session.siguiente) {
         request.session.error = undefined;
         nuevoProducto.fetchAll()
             .then(([rows, fieldData]) => {
-                descripcion = "";
-                total = 0;
-                costoTotal = 0;
+                request.session.descripcion = "";
+                request.session.total = 0;
+                request.session.costoTotal = 0;
                 for (let producto of rows) {
                     let string = "request.body."
                     let skuProducto = producto.sku;
                     string = string + skuProducto;
                     let costo = parseInt(eval(string)) * producto.precio;
-                    total += parseInt(eval(string));
-                    costoTotal += costo;
+                    request.session.total += parseInt(eval(string));
+                    request.session.costoTotal += costo;
                     if (parseInt(eval(string)) > 0) {
                         var auxiliar = parseInt(eval(string));
                         var aux = auxiliar.toString();
-                        descripcion += skuProducto + ": " + aux + ", ";
-                        const pedprod = new pedidoProducto(producto.idProducto, idPedido, parseInt(eval(string)));
+                        request.session.descripcion += skuProducto + ": " + aux + ", ";
+                        const pedprod = new pedidoProducto(producto.idProducto, request.session.idPedido, parseInt(eval(string)));
                         pedprod.save()
                             .then(() => {
                             })
@@ -221,17 +213,17 @@ exports.postCompra02 = (request, response, next) => {
                             });
                     }
                 }
-                descripcion = descripcion.slice(0, -2);
+                request.session.descripcion = request.session.descripcion.slice(0, -2);
 
-                if (total > 14) {
+                if (request.session.total > 14) {
                     response.redirect('compra03');
                 } else {
-                    return db.execute('DELETE FROM pedidoproducto WHERE idPedido = ?', [idPedido])
+                    return db.execute('DELETE FROM pedidoproducto WHERE idPedido = ?', [request.session.idPedido])
                         .then(() => {
                             request.session.error = "Su pedido debe de ser mínimo de 15 elementos";
-                            descripcion = "";
-                            total = 0;
-                            costoTotal = 0;
+                            request.session.descripcion = "";
+                            request.session.total = 0;
+                            request.session.costoTotal = 0;
                             response.redirect('compra02');
                         })
                         .catch(err => {
@@ -243,9 +235,9 @@ exports.postCompra02 = (request, response, next) => {
     } else {
         return db.execute('DELETE FROM pedido WHERE idPedido = ?', [idPedido])
             .then(() => {
-                descripcion = "";
-                total = 0;
-                costoTotal = 0;
+                request.session.descripcion = "";
+                request.session.total = 0;
+                request.session.costoTotal = 0;
                 response.redirect('inicio');
             })
             .catch(err => {
@@ -256,37 +248,36 @@ exports.postCompra02 = (request, response, next) => {
 exports.getCompra03 = (request, response, next) => {
     const pedido = new pedidoNuevo();
     response.render('compra03', {
-        usuario: nombre,
+        usuario: request.session.user,
         titulo: "Paso 3 compra"
     });
 };
-var costoEntrega = 0;
-let tipoEntrega = "";
 exports.postCompra03 = (request, response, next) => {
+    request.session.tipoEntrega = "";
     if (request.body.aceptar) {
-        siguiente = true;
+        request.session.siguiente = true;
     } else {
-        siguiente = false;
+        request.session.siguiente = false;
     }
-    if (siguiente) {
-        tipoEntrega = request.body.entrega;
-        switch (tipoEntrega) {
+    if (request.session.siguiente) {
+        request.session.tipoEntrega = request.body.entrega;
+        switch (request.session.tipoEntrega) {
             case "domicilio":
-                costoEntrega = 50;
+                request.session.costoEntrega = 50;
                 break;
             case "sucursal":
-                costoEntrega = 0;
+                request.session.costoEntrega = 0;
                 break;
         }
         response.redirect('compra04');
     } else {
-        return db.execute('DELETE FROM pedido WHERE idPedido = ?', [idPedido])
+        return db.execute('DELETE FROM pedido WHERE idPedido = ?', [request.session.idPedido])
             .then(() => {
-                descripcion = "";
-                total = 0;
-                costoTotal = 0;
-                costoEntrega = 0;
-                tipoEntrega = "";
+                request.session.descripcion = "";
+                request.session.total = 0;
+                request.session.costoTotal = 0;
+                request.session.costoEntrega = 0;
+                request.session.tipoEntrega = "";
                 response.redirect('inicio');
             })
             .catch(err => {
@@ -294,20 +285,19 @@ exports.postCompra03 = (request, response, next) => {
             });
     }
 };
-let fechaEntrega = "";
 exports.getCompra04 = (request, response, next) => {
-    costoTotal += costoEntrega;
+    request.session.costoTotal += request.session.costoEntrega;
 
-    return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [idPedido])
+    return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
         .then(([rows, fieldData]) => {
-            fechaEntrega = "";
-            fechaEntrega += rows[0].diaDeEntrega + " de " + rows[0].horaInicioEntrega + " a " + rows[0].horaFinalEntrega;
-            const pedidoFinal = new finalizarPedido(fechaEntrega, 'En espera de pago', descripcion, tipoEntrega, total, costoTotal);
-            pedidoFinal.save(idPedido)
+            request.session.fechaEntrega = "";
+            request.session.fechaEntrega += rows[0].diaDeEntrega + " de " + rows[0].horaInicioEntrega + " a " + rows[0].horaFinalEntrega;
+            const pedidoFinal = new finalizarPedido(request.session.fechaEntrega, 'En espera de pago', request.session.descripcion, request.session.tipoEntrega, request.session.total, request.session.costoTotal);
+            pedidoFinal.save(request.session.idPedido)
                 .then(([rows, fieldData]) => {
                     response.render('compra04', {
-                        usuario: nombre,
-                        costo: costoTotal
+                        usuario: request.session.user,
+                        costo: request.session.costoTotal
                     });
                 })
                 .catch(err => console.log(err));
@@ -316,7 +306,7 @@ exports.getCompra04 = (request, response, next) => {
 };
 exports.postCompra04 = (request, response, next) => {
     response.render('compra04', {
-        usuario: nombre,
+        usuario: request.session.user,
     });
 };
 exports.getCliente = (request, response, next) => {

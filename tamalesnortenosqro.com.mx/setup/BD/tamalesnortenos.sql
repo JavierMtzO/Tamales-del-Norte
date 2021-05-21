@@ -284,7 +284,7 @@ ALTER TABLE `distribucion`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10017;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
 
 --
 -- AUTO_INCREMENT for table `promocion`
