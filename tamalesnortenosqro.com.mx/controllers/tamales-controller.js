@@ -98,11 +98,10 @@ exports.getLogin = (request, response, next) => {
 };
 let nombre;
 let idCliente;
-let email;
 exports.postLogin = (request, response, next) => {
     request.session.error = undefined;
-    email = request.body.email;
-    nuevoCliente.fetchOne(email)
+    request.session.email = request.body.email;
+    nuevoCliente.fetchOne(request.session.email)
         .then(([rows, fieldData]) => {
             nombre = rows[0].nombre;
             idCliente = rows[0].idCliente;
@@ -186,8 +185,8 @@ exports.getCompra02 = (request, response, next) => {
         })
         .catch(err => console.log(err));
 };
-var total = 0;
-var costoTotal = 0;
+let total = 0;
+let costoTotal = 0;
 let descripcion = "";
 exports.postCompra02 = (request, response, next) => {
     if (request.body.aceptar) {
@@ -321,7 +320,7 @@ exports.postCompra04 = (request, response, next) => {
     });
 };
 exports.getCliente = (request, response, next) => {
-    nuevoCliente.fetchOne(email)
+    nuevoCliente.fetchOne(request.session.email)
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.render('perfilCliente', {
