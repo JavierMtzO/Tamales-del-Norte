@@ -77,3 +77,5 @@ SELECT horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idClien
 UPDATE pedido SET etiqueta = '20017' WHERE idPedido = 10027;
 
 SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente = 1613
+
+SELECT * FROM distribucion d, cliente c WHERE d.idDistribucion = c.idDistribucion AND idCliente = 

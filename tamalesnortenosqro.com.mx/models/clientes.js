@@ -47,5 +47,8 @@ module.exports = class nuevoCliente {
     static fetchPedidos(id) {
         return db.execute('SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente =  ?', [id]);
     }
+    static fetchColonia(id) {
+        return db.execute('SELECT * FROM distribucion d, cliente c WHERE d.idDistribucion = c.idDistribucion AND idCliente =  ?', [id]);
+    }
 
 }

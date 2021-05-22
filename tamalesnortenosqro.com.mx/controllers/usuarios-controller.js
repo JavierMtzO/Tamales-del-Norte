@@ -42,13 +42,20 @@ exports.postLogin = (request, response, next) => {
 };
 exports.getPerfil = (request, response, next) => {
     nuevoCliente.fetchOne(request.session.email)
-        .then(([rows, fieldData]) => {
-            response.render('clientePerfil', {
-                usuario: rows
-            });
+        .then(([rowsUsuario, fieldData]) => {
+            nuevoCliente.fetchColonia(request.session.idCliente)
+                .then(([rowsColonia, fieldData]) => {
+                    response.render('clientePerfil', {
+                        usuario: rowsUsuario,
+                        colonia: rowsColonia
+                    });
+                }).catch(err => {
+                    console.log(err);
+                });
         }).catch(err => {
             console.log(err);
         });
+
 }
 exports.getPedidos = (request, response, next) => {
     nuevoCliente.fetchPedidos(request.session.idCliente)
