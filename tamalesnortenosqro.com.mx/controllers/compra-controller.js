@@ -131,7 +131,7 @@ exports.postCompra03 = (request, response, next) => {
                 request.session.costoEntrega = 0;
                 break;
         }
-        response.redirect('compra04');
+        response.redirect('carrito');
     } else {
         return db.execute('DELETE FROM pedido WHERE idPedido = ?', [request.session.idPedido])
             .then(() => {
@@ -147,6 +147,9 @@ exports.postCompra03 = (request, response, next) => {
             });
     }
 };
+exports.getCarrito = (request, response, next) => {
+    response.render('carrito');
+}
 exports.getCompra04 = (request, response, next) => {
     request.session.costoTotal += request.session.costoEntrega;
 

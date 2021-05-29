@@ -33,6 +33,7 @@ app.use('/compra03', rutasTamales);
 app.use('/compra04', rutasTamales);
 app.use('/perfil', rutasTamales);
 app.use('/pedidos', rutasTamales);
+app.use('/carrito', rutasTamales);
 
 app.use((request, response, next) => {
     console.log('Error 404');
