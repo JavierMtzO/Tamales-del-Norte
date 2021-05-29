@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Catamaran&display=swap" rel="stylesheet">
+    <link href="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -55,7 +56,7 @@
 
             <!-- Page content-->
             <div style="background-color: #F5BD7A; max-height: 548px; padding: 2%;" class="container">
-                <table class="table">
+                <table id="myTable" class="table">
                     <thead>
                         <tr>
                             <th>Día de entrega</th>
@@ -65,31 +66,11 @@
                             <th>Costo Total</th>
                         </tr>
                     </thead>
-                    <% for (let pedido of pedidos) {%>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <%= pedido.diaEntrega%>
-                            </td>
-                            <td>
-                                <%= pedido.descripcion%>
-                            </td>
-                            <td>
-                                <%= pedido.estatus%>
-                            </td>
-                            <td>
-                                <%= pedido.cantidadTotal%>
-                            </td>
-                            <td>
-                                <%= pedido.costoTotal%>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <% } %>
                 </table>
             </div>
         </div>
     </div>
+
 
 
 
@@ -99,6 +80,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        var data = [
+        <% for (let pedido of pedidos) {%>
+            [
+                "<%= pedido.diaEntrega%>",
+                "<%= pedido.descripcion%>",
+                "<%= pedido.estatus%>",
+                "<%= pedido.cantidadTotal%>",
+                "<%= pedido.costoTotal%>"
+            ],<% } %>
+        ];
+        $(document).ready(function () {
+            $('#myTable').DataTable({ data: data });
+        });
+    </script>
 </body>
 
 </html>
