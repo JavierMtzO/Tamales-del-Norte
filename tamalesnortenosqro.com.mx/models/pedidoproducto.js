@@ -15,11 +15,15 @@ module.exports = class pedidoProducto {
             [this.idProducto, this.idPedido, this.cantidadPorProducto]
         );
     }
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM pedidoproducto p, cliente c, pedido pe, producto pr, distribucion d WHERE pe.idPedido = p.idPedido AND c.idCliente = pe.idCliente AND pr.idProducto = p.idProducto AND d.idDistribucion = c.idDistribucion AND pe.idPedido = ?', [id]);
+    }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute('SELECT * FROM pedidoproducto');
     }
+
 
     static delete(id) {
         return db.execute('DELETE FROM pedidoproducto WHERE id = ?', [id]);

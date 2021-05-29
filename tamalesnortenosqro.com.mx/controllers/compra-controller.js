@@ -2,6 +2,7 @@ const nuevoProducto = require('../models/producto.js')
 const pedidoProducto = require('../models/pedidoproducto.js')
 const pedidoNuevo = require('../models/iniciarPedido.js')
 const finalizarPedido = require('../models/pedido.js')
+const nuevaDistribucion = require('../models/distribucion.js')
 const db = require('../util/database');
 
 exports.getCompra01 = (request, response, next) => {
@@ -66,8 +67,8 @@ exports.postCompra02 = (request, response, next) => {
                         var auxiliar = parseInt(eval(string));
                         var aux = auxiliar.toString();
                         request.session.descripcion += skuProducto + ": " + aux + ", ";
-                        const pedprod = new pedidoProducto(producto.idProducto, request.session.idPedido, parseInt(eval(string)));
-                        pedprod.save()
+                        request.session.pedprod = new pedidoProducto(producto.idProducto, request.session.idPedido, parseInt(eval(string)));
+                        request.session.pedprod.save()
                             .then(() => {
                             })
                             .catch(err => {
@@ -140,7 +141,13 @@ exports.postCompra03 = (request, response, next) => {
                 request.session.costoTotal = 0;
                 request.session.costoEntrega = 0;
                 request.session.tipoEntrega = "";
-                response.redirect('inicio');
+                return db.execute('DELETE FROM pedidoproducto WHERE idPedido = ?', [request.session.idPedido])
+                    .then(() => {
+                        response.redirect('inicio');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             })
             .catch(err => {
                 console.log(err);
@@ -148,7 +155,23 @@ exports.postCompra03 = (request, response, next) => {
     }
 };
 exports.getCarrito = (request, response, next) => {
-    response.render('carrito');
+
+
+    nuevaDistribucion.fetchAll()
+        .then(([rowsDistribucion, fieldData]) => {
+            pedidoProducto.fetchOne(request.session.idPedido)
+                .then(([rowsPedProd, fieldData]) => {
+                    response.render('carrito', {
+                        pedido: rowsPedProd,
+                        costo: request.session.costoTotal,
+                        colonia: rowsDistribucion
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        })
+        .catch(err => console.log(err));
 }
 exports.getCompra04 = (request, response, next) => {
     request.session.costoTotal += request.session.costoEntrega;

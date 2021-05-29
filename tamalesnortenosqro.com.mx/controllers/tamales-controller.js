@@ -1,7 +1,7 @@
 const nuevoCliente = require('../models/clientes.js');
-const nuevaDistribucion = require('../models/distribucion.js')
 const nuevoProducto = require('../models/producto.js')
 const nuevaPromocion = require('../models/promocion.js')
+const nuevaDistribucion = require('../models/distribucion.js')
 
 exports.get = (request, response, next) => {
     nuevoProducto.fetchAll()
