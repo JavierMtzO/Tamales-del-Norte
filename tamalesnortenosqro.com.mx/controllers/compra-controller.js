@@ -208,9 +208,6 @@ exports.postCarrito = (request, response, next) => {
                     }
                 }
                 request.session.descripcion = request.session.descripcion.slice(0, -2);
-                console.log(request.session.total);
-                console.log(request.session.costoTotal);
-                console.log(request.session.descripcion);
                 if (request.session.total > 14) {
                     response.redirect('carrito');
                 } else {
@@ -241,7 +238,6 @@ exports.postCarrito = (request, response, next) => {
     }
 }
 exports.getCompra04 = (request, response, next) => {
-    request.session.costoTotal += request.session.costoEntrega;
     return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
         .then(([rows, fieldData]) => {
             request.session.fechaEntrega = "";
