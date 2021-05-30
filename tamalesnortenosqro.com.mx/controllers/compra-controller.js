@@ -77,7 +77,6 @@ exports.postCompra02 = (request, response, next) => {
                     }
                 }
                 request.session.descripcion = request.session.descripcion.slice(0, -2);
-
                 if (request.session.total > 14) {
                     response.redirect('compra03');
                 } else {
@@ -109,7 +108,6 @@ exports.postCompra02 = (request, response, next) => {
     }
 };
 exports.getCompra03 = (request, response, next) => {
-    const pedido = new pedidoNuevo();
     response.render('compra03', {
         usuario: request.session.user,
         titulo: "Paso 3 compra"
@@ -155,12 +153,14 @@ exports.postCompra03 = (request, response, next) => {
     }
 };
 exports.getCarrito = (request, response, next) => {
+    request.session.costoTotal += request.session.costoEntrega;
     nuevaDistribucion.fetchAll()
         .then(([rowsDistribucion, fieldData]) => {
             pedidoProducto.fetchOne(request.session.idPedido)
                 .then(([rowsPedProd, fieldData]) => {
                     response.render('carrito', {
                         pedido: rowsPedProd,
+                        entrega: request.session.costoEntrega,
                         costo: request.session.costoTotal,
                         colonia: rowsDistribucion
                     });
@@ -172,12 +172,76 @@ exports.getCarrito = (request, response, next) => {
         .catch(err => console.log(err));
 }
 exports.postCarrito = (request, response, next) => {
-    console.log(request.body);
-    response.redirect('compra04');
+
+
+    if (request.body.finalizar) {
+        response.redirect('compra04');
+    }
+    if (request.body.actualizar) {
+        request.session.error = undefined;
+        nuevoProducto.fetchAll()
+            .then(([rows, fieldData]) => {
+                request.session.descripcion = "";
+                request.session.total = 0;
+                request.session.costoTotal = 0;
+                for (let productos of rows) {
+                    // console.log(request.session.total);
+                    // console.log(request.session.costoTotal);
+                    let stringCarrito = "request.body."
+                    let skuProductoCarrito = productos.sku;
+                    stringCarrito = stringCarrito + skuProductoCarrito;
+                    if (!(Number.isNaN(parseInt(eval(stringCarrito))))) {
+                        let costoCarrito = parseInt(eval(stringCarrito)) * productos.precio;
+                        request.session.total += parseInt(eval(stringCarrito));
+                        request.session.costoTotal += costoCarrito;
+                    }
+                    if (parseInt(eval(stringCarrito)) > 0) {
+                        let auxiliarCarrito = parseInt(eval(stringCarrito));
+                        let auxCarrito = auxiliarCarrito.toString();
+                        request.session.descripcion += skuProductoCarrito + ": " + auxCarrito + ", ";
+                        pedidoProducto.update(parseInt(eval(stringCarrito)), request.session.idPedido, productos.idProducto)
+                            .then(() => {
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                    }
+                }
+                request.session.descripcion = request.session.descripcion.slice(0, -2);
+                console.log(request.session.total);
+                console.log(request.session.costoTotal);
+                console.log(request.session.descripcion);
+                if (request.session.total > 14) {
+                    response.redirect('carrito');
+                } else {
+                    response.redirect('carrito');
+                }
+            })
+            .catch(err => console.log(err));
+    }
+    if (request.body.cancelar) {
+        return db.execute('DELETE FROM pedido WHERE idPedido = ?', [request.session.idPedido])
+            .then(() => {
+                request.session.descripcion = "";
+                request.session.total = 0;
+                request.session.costoTotal = 0;
+                request.session.costoEntrega = 0;
+                request.session.tipoEntrega = "";
+                return db.execute('DELETE FROM pedidoproducto WHERE idPedido = ?', [request.session.idPedido])
+                    .then(() => {
+                        response.redirect('inicio');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 }
 exports.getCompra04 = (request, response, next) => {
     request.session.costoTotal += request.session.costoEntrega;
-
     return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
         .then(([rows, fieldData]) => {
             request.session.fechaEntrega = "";
