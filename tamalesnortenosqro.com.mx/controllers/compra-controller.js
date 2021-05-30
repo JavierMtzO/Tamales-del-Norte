@@ -155,8 +155,6 @@ exports.postCompra03 = (request, response, next) => {
     }
 };
 exports.getCarrito = (request, response, next) => {
-
-
     nuevaDistribucion.fetchAll()
         .then(([rowsDistribucion, fieldData]) => {
             pedidoProducto.fetchOne(request.session.idPedido)
@@ -172,6 +170,10 @@ exports.getCarrito = (request, response, next) => {
                 });
         })
         .catch(err => console.log(err));
+}
+exports.postCarrito = (request, response, next) => {
+    console.log(request.body);
+    response.redirect('compra04');
 }
 exports.getCompra04 = (request, response, next) => {
     request.session.costoTotal += request.session.costoEntrega;

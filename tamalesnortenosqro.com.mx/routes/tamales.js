@@ -37,6 +37,7 @@ router.get('/compra03', isAuth, compraController.getCompra03);
 router.post('/compra03', isAuth, compraController.postCompra03);
 
 router.get('/carrito', isAuth, compraController.getCarrito);
+router.post('/carrito', isAuth, compraController.postCarrito);
 
 router.get('/compra04', isAuth, compraController.getCompra04);
 router.post('/compra04', isAuth, compraController.postCompra04);
