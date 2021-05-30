@@ -41,12 +41,11 @@
     </div>
 
     <div style="min-height: 548px;" class="container tamales-compra03">
-
-        <h1 class="tamales-compra03-titulo">Seleccione entre las opciones de entrega</h1>
         <form action="compra03" method="POST">
+            <input class="btn btn-danger btn-sm m-3 float-right" type="submit" name="cancelar" value="Cancelar">
+            <h1 class="tamales-compra03-titulo">Seleccione entre las opciones de entrega</h1>
 
             <div class="tamales-compra03-entregas">
-
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="entrega" value="sucursal" checked>
                     <label class="form-check-label">
@@ -62,12 +61,24 @@
             </div>
 
             <div class="tamales-compra03-botones">
-                <input class="btn btn-danger tamales-compra01-button01" type="submit" name="cancelar" value="Cancelar">
-                <input class="btn btn-success tamales-compra01-button02" type="submit" name="aceptar" value="Aceptar">
+                <input class="btn btn-success btn-lg" type="submit" name="aceptar" value="Siguiente">
             </div>
         </form>
     </div>
     </div>
+
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+        <hr class="my-4">
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2021 Copyright:
+            <a> Tamales del Norte Querétaro </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
 
 
     <!-- Optional JavaScript -->

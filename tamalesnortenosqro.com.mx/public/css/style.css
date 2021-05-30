@@ -50,7 +50,7 @@ p {
     font-size: 20px;
 }
 
-.tamales-productos {
+.tamales-productos.tamales-inicio {
     margin-top: 3%;
     background-color: #F5BD7A;
     border-radius: 25px;
@@ -63,7 +63,10 @@ p {
 }
 
 .tamales-productos .tamales-productos-fila img{
-    width: 50%;
+    width: 30%;
+}
+.tamales-productos .tamales-productos-fila input{
+    width: 30%;
 }
 .tamales-productos .tamales-productos-fila{
     width: 33.333%;
@@ -200,7 +203,7 @@ a#navbarDropdown {
 
 
 .tamales-compra02-productos img{
-    width: 180px
+    width: 90px
 }
 .tamales-compra02-productos-fila h4 {
     margin-top: 2%;

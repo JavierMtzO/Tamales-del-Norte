@@ -41,13 +41,14 @@
     </div>
 
     <div class="container pt-3 text-center tamales-compra02 tamales-productos">
-        <h1 class="tamales-compra02-titulo">Seleccione el número de productos que desea comprar</h1>
-        <% if (error !== false) { %>
-        <span style="color: red; text-align: center;"> <%- error %></span>
-        <% }%>
-        <h4 class="tamales-compra02-descripcion">Pedido mínimo de 15 tamales</h4>
-
         <form action="compra02" method="POST">
+            <input class="btn btn-danger btn-sm m-3 float-right" type="submit" name="cancelar" value="Cancelar">
+            <h1 class="tamales-compra02-titulo">Seleccione el número de productos que desea comprar</h1>
+            <% if (error !== false) { %>
+            <span style="color: red; text-align: center;"> <%- error %></span>
+            <% }%>
+            <h4 class="tamales-compra02-descripcion">Pedido mínimo de 15 tamales</h4>
+
 
             <div class="d-flex flex-wrap justify-content-center container tamales-productos-columnas">
                 <% for (let producto of productos) {%>
@@ -61,12 +62,24 @@
             </div>
 
             <div class="tamales-compra01-botones">
-                <input class="btn btn-danger tamales-compra02-button01" type="submit" name="cancelar" value="Cancelar">
-                <input class="btn btn-success tamales-compra02-button02" type="submit" name="aceptar" value="Aceptar">
+                <input class="btn btn-success btn-lg" type="submit" name="aceptar" value="Siguiente">
             </div>
         </form>
 
     </div>
+
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+        <hr class="my-4">
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2021 Copyright:
+            <a> Tamales del Norte Querétaro </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
 
 
 
