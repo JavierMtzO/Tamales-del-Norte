@@ -4,6 +4,10 @@ const pedidoNuevo = require('../models/iniciarPedido.js')
 const finalizarPedido = require('../models/pedido.js')
 const nuevaDistribucion = require('../models/distribucion.js')
 const db = require('../util/database');
+const TWILIO_ID = 'AC3c04cd07683d579474a22d910438ffc4';
+const TWILIO_SK = '0d44d965c725d9969593d86f8a78776b';
+
+const client = require('twilio')(TWILIO_ID, TWILIO_SK);
 
 exports.getCompra01 = (request, response, next) => {
     response.render('compra01', {
@@ -238,21 +242,49 @@ exports.postCarrito = (request, response, next) => {
     }
 }
 exports.getCompra04 = (request, response, next) => {
-    return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
-        .then(([rows, fieldData]) => {
-            request.session.fechaEntrega = "";
-            request.session.fechaEntrega += rows[0].diaDeEntrega + " de " + rows[0].horaInicioEntrega + " a " + rows[0].horaFinalEntrega;
-            const pedidoFinal = new finalizarPedido(request.session.fechaEntrega, 'En espera de pago', request.session.descripcion, request.session.tipoEntrega, request.session.total, request.session.costoTotal);
-            pedidoFinal.save(request.session.idPedido)
+
+    client.messages
+        .create({
+            mediaUrl: ['https://4.bp.blogspot.com/-NMtSes4RP84/XBf0SSUToRI/AAAAAAAAEVA/kMQv7waP8UkFmP4N7nBY2FAbU-kMVcqOwCLcBGAs/s1600/654646.jpg'],
+            from: 'whatsapp:+14155238886',
+            body: 'Nuevo pedido para Tamales Norteños: ' + '*' + request.session.descripcion + '*',
+            to: 'whatsapp:+5214499048658'
+        })
+        .then((message) => {
+            console.log(message.sid);
+            return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
                 .then(([rows, fieldData]) => {
-                    response.render('compra04', {
-                        usuario: request.session.user,
-                        costo: request.session.costoTotal
-                    });
+                    request.session.fechaEntrega = "";
+                    request.session.fechaEntrega += rows[0].diaDeEntrega + " de " + rows[0].horaInicioEntrega + " a " + rows[0].horaFinalEntrega;
+                    const pedidoFinal = new finalizarPedido(request.session.fechaEntrega, 'En espera de pago', request.session.descripcion, request.session.tipoEntrega, request.session.total, request.session.costoTotal);
+                    pedidoFinal.save(request.session.idPedido)
+                        .then(([rows, fieldData]) => {
+                            response.render('compra04', {
+                                usuario: request.session.user,
+                                costo: request.session.costoTotal
+                            });
+                        })
+                        .catch(err => console.log(err));
                 })
                 .catch(err => console.log(err));
         })
-        .catch(err => console.log(err));
+
+
+    // return db.execute('SELECT diaDeEntrega, horaInicioEntrega, horaFinalEntrega FROM distribucion d, pedido p, cliente c WHERE p.idCliente = c.idCliente AND d.idDistribucion = c.idDistribucion AND idPedido = ?', [request.session.idPedido])
+    //     .then(([rows, fieldData]) => {
+    //         request.session.fechaEntrega = "";
+    //         request.session.fechaEntrega += rows[0].diaDeEntrega + " de " + rows[0].horaInicioEntrega + " a " + rows[0].horaFinalEntrega;
+    //         const pedidoFinal = new finalizarPedido(request.session.fechaEntrega, 'En espera de pago', request.session.descripcion, request.session.tipoEntrega, request.session.total, request.session.costoTotal);
+    //         pedidoFinal.save(request.session.idPedido)
+    //             .then(([rows, fieldData]) => {
+    //                 response.render('compra04', {
+    //                     usuario: request.session.user,
+    //                     costo: request.session.costoTotal
+    //                 });
+    //             })
+    //             .catch(err => console.log(err));
+    //     })
+    //     .catch(err => console.log(err));
 };
 exports.postCompra04 = (request, response, next) => {
     response.render('compra04', {
