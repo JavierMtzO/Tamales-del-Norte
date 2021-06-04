@@ -5,7 +5,7 @@ const finalizarPedido = require('../models/pedido.js')
 const nuevaDistribucion = require('../models/distribucion.js')
 const db = require('../util/database');
 const TWILIO_ID = 'AC3c04cd07683d579474a22d910438ffc4';
-const TWILIO_SK = '0d44d965c725d9969593d86f8a78776b';
+const TWILIO_SK = '58fa525fac32a75b86b3d996777aba49';
 
 const client = require('twilio')(TWILIO_ID, TWILIO_SK);
 

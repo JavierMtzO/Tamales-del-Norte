@@ -18,14 +18,28 @@ module.exports = class pedido {
             [this.diaEntrega, this.estatus, this.descripcion, this.tipoDeEntrega, this.cantidadTotal, this.costoTotal, idPedido]
         );
     }
+    static delete(idPedido) {
+        return db.execute('DELETE FROM pedido WHERE idPedido = ?',
+            [idPedido]
+        );
+    }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return db.execute('SELECT * FROM producto');
+        return db.execute('SELECT * FROM pedido');
     }
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM cliente c, pedido pe, distribucion d WHERE c.idCliente = pe.idCliente AND d.idDistribucion = c.idDistribucion AND pe.idPedido = ?', [id]);
+    }
+
     static savePedido(idPedido) {
         return db.execute('UPDATE pedido SET diaEntrega = ?, estatus = ?, descripcion = ?, tipoDeEntrega = ?, cantidadTotal = ?, costoTotal = ? WHERE idPedido = ?;',
             [this.diaEntrega, this.estatus, this.descripcion, this.tipoDeEntrega, this.cantidadTotal, this.costoTotal, idPedido]
+        );
+    }
+    static saveStatus(estatus, idPedido) {
+        return db.execute('UPDATE pedido SET estatus = ? WHERE idPedido = ?;',
+            [estatus, idPedido]
         );
     }
 

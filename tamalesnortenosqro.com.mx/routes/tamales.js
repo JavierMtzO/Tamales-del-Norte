@@ -25,6 +25,19 @@ router.post('/login', usuariosController.postLogin);
 
 router.get('/logout', usuariosController.logout);
 
+router.get('/admin-pedidos', isAuth, usuariosController.getAdminPedidos);
+router.post('/admin-pedidos', isAuth, usuariosController.postAdminPedidos);
+router.get('/admin-editar-pedidos', isAuth, usuariosController.getAdminEditarPedidos);
+router.post('/admin-editar-pedidos', isAuth, usuariosController.postAdminEditarPedidos);
+
+router.get('/admin-clientes', isAuth, usuariosController.getAdminClientes);
+router.post('/admin-clientes', isAuth, usuariosController.postAdminClientes);
+router.get('/admin-editar-clientes', isAuth, usuariosController.getAdminEditarClientes);
+router.post('/admin-editar-clientes', isAuth, usuariosController.postAdminEditarClientes);
+
+
+
+
 router.get('/inicio', isAuth, tamalesController.getInicio);
 
 router.get('/compra01', isAuth, compraController.getCompra01);

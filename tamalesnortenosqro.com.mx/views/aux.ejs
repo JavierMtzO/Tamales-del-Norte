@@ -25,7 +25,7 @@
 <body>
     <div class="container tamales-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a class="navbar-brand tamales-navbar-logo" href="/inicio">
+            <a class="navbar-brand tamales-navbar-logo" href="/admin-perfil">
                 <img src="img/tamales-logo.jpeg" width="220" height="160" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -41,25 +41,26 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"><a
-                        class="list-group-item list-group-item-action list-group-item-light p-3"
-                        href="/inicio">Inicio</a>
-                </div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/perfil">Ver
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin-perfil">Ver
                         Perfil</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
-                        href="/pedidos">Ver
-                        Pedidos</a>
-                    <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
-                        href="/logout">
-                        <p class="text-danger">Cerrar sesión</p>
-                    </a>
+                        href="/admin-pedidos">Pedidos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-clientes">Clientes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-productos">Productos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-distribucion">Distribución</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-promociones">Promociones</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-reporte">Reporte mensual de productos vendidos</a>
                 </div>
             </div>
 
             <!-- Page content-->
-            <div style="padding: 2%;" class="container">
+            <div style="background-color: #F5BD7A; max-height: 548px; padding: 2%;" class="container">
                 <table id="myTable" class="table">
                     <thead>
                         <tr>
@@ -87,6 +88,8 @@
         <!--/.Copyright-->
 
     </footer>
+
+
 
 
     <!-- Optional JavaScript -->

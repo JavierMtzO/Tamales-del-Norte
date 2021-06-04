@@ -51,11 +51,15 @@
                         Perfil</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/pedidos">Ver
                         Pedidos</a>
+                    <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
+                        href="/logout">
+                        <p class="text-danger">Cerrar sesión</p>
+                    </a>
                 </div>
             </div>
 
             <!-- Page content-->
-            <div style="background-color: #F5BD7A; padding: 2%;" class="container">
+            <div style="background-color: #F5BD7A; max-height: 860px; padding: 2%;" class="container">
                 <div class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
                     <div class="tamales-usuarioNoRegistrado-02-formulario-left">
                         <label for="nombre"> Nombre </label>
@@ -91,9 +95,6 @@
 
                         <label for="colonia">Colonia</label>
                         <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <!-- <select class="form-control" name="colonia" required>
-                                <option value="colonia">Colonia </option>
-                            </select> -->
                             <input value="<%= colonia[0].nombreDeColonia%>" class="form-control" type="text"
                                 name="direccion" required readonly>
                         </div>

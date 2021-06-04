@@ -38,9 +38,6 @@
     <!--Main layout-->
     <main class="container">
         <div class="container wow fadeIn">
-            <!-- Heading -->
-            <h2 class="my-5 h2 text-center">Envío de su pedido</h2>
-            <!--Grid row-->
             <form action="carrito" method="POST">
                 <input class="btn btn-danger btn-sm m-3" type="submit" name="cancelar" value="Cancelar pedido">
                 <div class="row">
@@ -57,7 +54,7 @@
                                     <div class="md-form ">
                                         <label for="firstName" class="">Nombre</label>
                                         <input type="text" name="nombre" id="firstName" class="form-control"
-                                            value="<%= pedido[0].nombre%>">
+                                            value="<%= pedido[0].nombre%>" readonly>
                                     </div>
                                 </div>
                                 <!--Grid column-->
@@ -67,7 +64,7 @@
                                     <div class="md-form">
                                         <label for="lastName" class="">Apellidos</label>
                                         <input type="text" name="apellidos" id="lastName" class="form-control"
-                                            value="<%= pedido[0].apellidos%>">
+                                            value="<%= pedido[0].apellidos%>" readonly>
                                     </div>
                                 </div>
                                 <!--Grid column-->
@@ -78,7 +75,7 @@
                                 <!--Grid column-->
                                 <div class="col-lg-4 col-md-12 mb-4">
                                     <label for="country">Ciudad</label>
-                                    <select class="custom-select d-block w-100" id="country">
+                                    <select class="custom-select d-block w-100" id="country" disabled>
                                         <option value="">Querétaro</option>
                                     </select>
                                 </div>
@@ -86,7 +83,7 @@
                                 <!--Grid column-->
                                 <div class="col-lg-4 col-md-6 mb-4">
                                     <label for="state">Colonia</label>
-                                    <select class="custom-select d-block w-100" id="state">
+                                    <select class="custom-select d-block w-100" id="state" disabled>
                                         <option value=""><%= pedido[0].nombreDeColonia%></option>
                                         <% for (let col of colonia) {%>
                                         <option><%= col.nombreDeColonia%></option>
@@ -100,14 +97,14 @@
                             <div class="md-form mb-3">
                                 <label for="address" class="">Dirección de entrega</label>
                                 <input type="text" name="direccion" id="address" class="form-control"
-                                    value="<%= pedido[0].direccion%>">
+                                    value="<%= pedido[0].direccion%>" readonly>
                             </div>
 
                             <!--address-2-->
                             <div class="md-form mb-5">
                                 <label for="address-2" class="">Referencias de entrega</label>
                                 <input type="text" name="referencias" id="address-2" class="form-control"
-                                    value="<%= pedido[0].referenciaDomicilio%>">
+                                    value="<%= pedido[0].referenciaDomicilio%>" readonly>
                             </div>
                         </div>
                         <!--/.Card-->

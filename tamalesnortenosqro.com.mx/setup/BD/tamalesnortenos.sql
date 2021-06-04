@@ -3,23 +3,19 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 19, 2021 at 01:32 PM
+-- Generation Time: Jun 02, 2021 at 02:44 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 --
 -- Database: `tamalesnortenos`
 --
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `cliente`
 --
-
 CREATE TABLE `cliente` (
   `idCliente` int(11) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
@@ -31,11 +27,9 @@ CREATE TABLE `cliente` (
   `idDistribucion` int(11) NOT NULL,
   `password` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Dumping data for table `cliente`
 --
-
 INSERT INTO `cliente` (`idCliente`, `nombre`, `apellidos`, `direccion`, `correoElectronico`, `referenciaDomicilio`, `telefono`, `idDistribucion`, `password`) VALUES
 (1600, 'Eduardo', 'Blanco', 'Av. Industrias 403', 'Arbol de naranjas en la entrada', 'blanco@gmail.com', '4425998745\'', 8384, 'hola123'),
 (1601, 'Eva', 'Espinoza', 'Himlaya 501', 'Al lado de un dentista', 'espinoza@gmail.com', '4425874126', 8385, 'hola123'),
@@ -45,21 +39,16 @@ INSERT INTO `cliente` (`idCliente`, `nombre`, `apellidos`, `direccion`, `correoE
 (1605, 'Angelica', 'Ripol', 'Emiliano Zapata 83', 'Al lado de una pasteleria', 'ripol@gmail.com', '4425874569', 8389, 'hola123'),
 (1606, 'Andrea', 'Zaragoza', '5 de Mayo 852', 'Puerta roja con negro', 'zaragoza@gmail.com', '4425896325', 8390, 'hola123'),
 (1613, 'Javier', 'Martinez', 'Av Eugenio Garza Sada 628', 'javier@itesm.mx', 'Enfrente al Tec de Monterrey', '4499048658', 8384, '$2a$12$0/4ILwOUfk.Wes.ZYbK77uZJlolmt.czDGMEcC8pCrdVqsfzlH6/y'),
-(1614, 'Aldomar', 'Ramirez', 'Av Eugenio Garza Sada 628', 'aldomar@itesm.mx', 'Portón amarillo', '4429568135', 8387, '$2a$12$v4HVmOCinl1jGE7.PBEc0OBBhccAq7fdgS8HXSHC6pFiW/omRnrLK'),
-(1615, 'Miguel', 'Martinez', 'Av Eugenio Garza Sada 628', 'miguel@itesm.mx', 'Enfrente al Tec de Monterrey', '4499048658', 8384, '$2a$12$F2dZMt4sdA1cGGpa..zNY.e1u66l73XApu2zCtWyi/Ujz8WJDcF/O');
-
+(1615, 'Aldomar', 'Ramirez', '19 Pond street', 'aldomar@itesm.mx', 'Portón blanco', '4429587468', 8391, '$2a$12$CLlZWcUOeSe1aj/vrqEn3udu7QadjovsBKzi41SQP7wxHtnnPwlj2');
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `descuento`
 --
-
 CREATE TABLE `descuento` (
   `idDescuento` int(11) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `Porcentaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Dumping data for table `descuento`
 --
@@ -118,7 +107,7 @@ CREATE TABLE `pedido` (
   `etiqueta` int(11) DEFAULT NULL,
   `diaEntrega` varchar(200) DEFAULT NULL,
   `estatus` varchar(50) DEFAULT NULL,
-  `descripcion` varchar(80) DEFAULT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
   `tipoDeEntrega` varchar(200) DEFAULT NULL,
   `cantidadTotal` int(11) DEFAULT NULL,
   `costoTotal` float DEFAULT NULL,
@@ -132,19 +121,16 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`idPedido`, `etiqueta`, `diaEntrega`, `estatus`, `descripcion`, `tipoDeEntrega`, `cantidadTotal`, `costoTotal`, `idCliente`, `fecha`, `idPromocion`) VALUES
-(10001, 20001, '2021-05-02', 'entregado', '2 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 10, 170, 1600, '2021-05-18 23:37:09', 2001),
-(10002, 20002, '2021-05-02', 'entregado', '3 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 11, 187, 1603, '2021-05-18 23:37:09', 2001),
-(10003, 20003, '2021-05-02', 'entregado', '4 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 12, 204, 1606, '2021-05-18 23:37:09', 2001),
-(10004, 20004, '2021-05-02', 'entregado', '5 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 13, 221, 1602, '2021-05-18 23:37:09', 2001),
-(10005, 20005, '2021-05-02', 'entregado', '6 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 14, 238, 1600, '2021-05-18 23:37:09', 2001),
-(10006, 20006, '2021-05-02', 'entregado', '7 tamales colorados, 3 verdes, 5 rajas', 'sucursal', 15, 255, 1596, '2021-05-18 23:37:09', 2001),
-(10007, 20007, '2021-05-03', 'entregado', '8 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 16, 272, 1597, '2021-05-18 23:37:09', 2001),
-(10008, 20008, '2021-05-03', 'entregado', '9 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 17, 289, 1598, '2021-05-18 23:37:09', 2001),
-(10010, 20010, '2021-05-03', 'entregado', '11 tamales colorados, 3 verdes, 5 rajas', 'sucursal', 19, 323, 1600, '2021-05-18 23:37:09', 2001),
-(10011, 20011, '2021-05-03', 'entregado', '12 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 20, 340, 1601, '2021-05-18 23:37:09', 2001),
-(10012, 20012, '2021-05-03', 'entregado', '13 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 21, 357, 1602, '2021-05-18 23:37:09', 2001),
-(10013, 20013, '2021-05-03', 'entregado', '14 tamales colorados, 3 verdes, 5 rajas', 'domicilio prioritario', 22, 374, 1603, '2021-05-18 23:37:09', 2001),
-(10014, 20014, '2021-05-03', 'entregado', '15 tamales colorados, 3 verdes, 5 rajas', 'domicilio', 23, 391, 1604, '2021-05-18 23:37:09', 2001);
+(23, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'frijoles: 10, dulce: 10', 'domicilio', 20, 390, 1613, '2021-05-30 21:28:00', NULL),
+(24, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'rajas: 10, dulce: 240', 'domicilio', 250, 4300, 1613, '2021-05-30 21:28:25', NULL),
+(26, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, rajas: 20, frijoles: 10', 'domicilio', 40, 730, 1613, '2021-06-02 04:58:20', NULL),
+(27, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 20', 'domicilio', 40, 730, 1613, '2021-06-02 05:00:29', NULL),
+(28, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 20', 'domicilio', 30, 560, 1613, '2021-06-02 05:07:43', NULL),
+(29, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 20', 'domicilio', 40, 730, 1613, '2021-06-02 05:10:52', NULL),
+(32, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'colorado: 10, chicharron: 10, frijoles: 10', 'domicilio', 30, 560, 1613, '2021-06-02 05:12:51', NULL),
+(36, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 10', 'domicilio', 30, 560, 1613, '2021-06-02 06:09:12', NULL),
+(37, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'colorado: 10, verde: 20', 'domicilio', 30, 560, 1613, '2021-06-02 14:36:55', NULL),
+(38, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10', 'domicilio', 20, 390, 1613, '2021-06-02 14:39:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,6 +144,46 @@ CREATE TABLE `pedidoproducto` (
   `fechaPedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `cantidadPorProducto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pedidoproducto`
+--
+
+INSERT INTO `pedidoproducto` (`idProducto`, `idPedido`, `fechaPedido`, `cantidadPorProducto`) VALUES
+(1, 15, '2021-05-30 21:09:27', 40),
+(1, 32, '2021-06-02 05:12:55', 10),
+(1, 37, '2021-06-02 14:37:00', 10),
+(2, 10, '2021-05-30 21:06:32', 15),
+(2, 12, '2021-05-30 21:08:00', 10),
+(2, 22, '2021-05-30 21:24:40', 10),
+(2, 26, '2021-06-02 04:58:24', 10),
+(2, 27, '2021-06-02 05:00:34', 10),
+(2, 28, '2021-06-02 05:07:46', 10),
+(2, 29, '2021-06-02 05:10:56', 10),
+(2, 36, '2021-06-02 06:09:16', 10),
+(2, 37, '2021-06-02 14:37:00', 20),
+(2, 38, '2021-06-02 14:39:13', 10),
+(3, 12, '2021-05-30 21:08:00', 25),
+(3, 24, '2021-05-30 21:28:28', 10),
+(3, 26, '2021-06-02 04:58:24', 20),
+(4, 32, '2021-06-02 05:12:55', 10),
+(5, 10, '2021-05-30 21:06:32', 10),
+(5, 22, '2021-05-30 21:24:40', 10),
+(5, 23, '2021-05-30 21:28:06', 10),
+(5, 25, '2021-06-01 16:08:44', 10),
+(5, 26, '2021-06-02 04:58:24', 10),
+(5, 27, '2021-06-02 05:00:34', 10),
+(5, 28, '2021-06-02 05:07:46', 20),
+(5, 29, '2021-06-02 05:10:56', 10),
+(5, 32, '2021-06-02 05:12:55', 10),
+(5, 36, '2021-06-02 06:09:16', 10),
+(5, 38, '2021-06-02 14:39:13', 10),
+(6, 23, '2021-05-30 21:28:06', 10),
+(6, 24, '2021-05-30 21:28:28', 240),
+(6, 25, '2021-06-01 16:08:44', 10),
+(6, 27, '2021-06-02 05:00:34', 20),
+(6, 29, '2021-06-02 05:10:56', 20),
+(6, 36, '2021-06-02 06:09:16', 10);
 
 -- --------------------------------------------------------
 
@@ -208,8 +234,7 @@ CREATE TABLE `promocion` (
 
 INSERT INTO `promocion` (`idPromocion`, `descripcion`, `fechaInicio`, `fechaFinal`, `imagenPromocion`, `idDescuento`) VALUES
 (2001, ' 2 x 1 en tamales dulces', '2021-05-20', '2021-06-20', 'img/tamales-promocion-1.jpg', 10501),
-(2002, ' 3 x 1 en tamales de rajas', '2021-05-20', '2021-06-20', 'img/tamales-promocion-2.jpg', 10501),
-(2003, ' 4 x 1 en tamales colorados', '2021-05-20', '2021-06-20', 'img/tamales-promocion-1.jpg', 10501);
+(2002, ' 3 x 1 en tamales de rajas', '2021-05-20', '2021-06-20', 'img/tamales-promocion-2.jpg', 10501);
 
 --
 -- Indexes for dumped tables
@@ -284,10 +309,10 @@ ALTER TABLE `distribucion`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2004;
+  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
