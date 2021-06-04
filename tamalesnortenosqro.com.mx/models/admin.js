@@ -37,6 +37,9 @@ module.exports = class nuevoAdmin {
     static fetchOne(email) {
         return db.execute('SELECT * FROM admin WHERE correoElectronico = ?', [email]);
     }
+    static fetchPerfil(id) {
+        return db.execute('SELECT * FROM admin WHERE idAdmin = ?', [id]);
+    }
     static login(correoElectronico, password) {
         return db.execute('SELECT * FROM admin WHERE ');
     }

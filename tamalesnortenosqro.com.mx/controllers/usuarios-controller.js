@@ -91,6 +91,18 @@ exports.getPedidos = (request, response, next) => {
         });
 }
 
+exports.getAdminPerfil = (request, response, next) => {
+    nuevoAdmin.fetchPerfil(request.session.idAdmin)
+        .then(([rows, fieldData]) => {
+            response.render('adminPerfil', {
+                usuario: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+
+
 exports.getAdminPedidos = (request, response, next) => {
     request.session.adminIdPedido = 0;
     nuevoPedido.fetchAll()
@@ -139,26 +151,31 @@ exports.postAdminEditarPedidos = (request, response, next) => {
 
 
 exports.getAdminClientes = (request, response, next) => {
-    request.session.adminIdPedido = 0;
-    nuevoPedido.fetchAll()
+    request.session.adminIdCliente = 0;
+    nuevoCliente.fetchAll()
         .then(([rows, fieldData]) => {
-            response.render('adminPedidos', {
-                pedidos: rows
+            response.render('adminClientes', {
+                clientes: rows
             });
         }).catch(err => {
             console.log(err);
         });
 }
 exports.postAdminClientes = (request, response, next) => {
-    request.session.adminIdPedido = request.body.editar;
-    response.redirect('/admin-editar-pedidos');
+    request.session.adminIdCliente = request.body.editarCliente;
+    response.redirect('/admin-editar-clientes');
 }
 exports.getAdminEditarClientes = (request, response, next) => {
-    nuevoPedido.fetchOne(request.session.adminIdPedido)
+    nuevoCliente.fetchCliente(request.session.adminIdCliente)
         .then(([rows, fieldData]) => {
-            response.render('adminEditarPedidos', {
-                pedidos: rows[0]
-            });
+            nuevaDistribucion.fetchAll()
+                .then(([dist, fieldData]) => {
+                    response.render('adminEditarClientes', {
+                        distribuciones: dist,
+                        usuario: rows
+                    });
+                })
+                .catch(err => console.log(err));
         }).catch(err => {
             console.log(err);
         });
@@ -166,16 +183,16 @@ exports.getAdminEditarClientes = (request, response, next) => {
 }
 exports.postAdminEditarClientes = (request, response, next) => {
     if (request.body.actualizar === 'true') {
-        nuevoPedido.saveStatus(request.body.estatus, request.session.adminIdPedido)
+        nuevoCliente.update(request.body.nombre, request.body.apellidos, request.body.telefono, request.body.direccion, request.body.referencia, request.body.email, request.body.colonia, request.session.adminIdCliente)
             .then(([rows, fieldData]) => {
-                response.redirect('admin-pedidos');
+                response.redirect('admin-clientes');
             }).catch(err => {
                 console.log(err);
             });
     } else {
-        nuevoPedido.delete(request.session.adminIdPedido)
+        nuevoCliente.delete(request.session.adminIdCliente)
             .then(([rows, fieldData]) => {
-                response.redirect('admin-pedidos');
+                response.redirect('admin-clientes');
             }).catch(err => {
                 console.log(err);
             });

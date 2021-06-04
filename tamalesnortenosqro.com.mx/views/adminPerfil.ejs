@@ -25,7 +25,7 @@
 <body>
     <div class="container tamales-navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a class="navbar-brand tamales-navbar-logo" href="/inicio">
+            <a class="navbar-brand tamales-navbar-logo" href="/admin-perfil">
                 <img src="img/tamales-logo.jpeg" width="220" height="160" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -41,16 +41,24 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"><a
-                        class="list-group-item list-group-item-action list-group-item-light p-3"
-                        href="/inicio">Inicio</a>
-                </div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
-                        href="/perfil">Ver
+                        href="/admin-perfil">Ver
                         Perfil</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/pedidos">Ver
-                        Pedidos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-pedidos">Pedidos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-clientes">Clientes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-productos">Productos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-distribucion">Distribución</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-promociones">Promociones</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-reporte">Reporte mensual de productos vendidos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-usuarios">Usuarios</a>
                     <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
                         href="/logout">
                         <p class="text-danger">Cerrar sesión</p>
@@ -60,6 +68,7 @@
 
             <!-- Page content-->
             <div style="padding: 2%;" class="container">
+                <h4 class="text-center">Admin: <%=usuario[0].idAdmin %></h4>
                 <div class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
                     <div class="tamales-usuarioNoRegistrado-02-formulario-left">
                         <label for="nombre"> Nombre </label>
@@ -76,48 +85,18 @@
 
                         <label for="ciudad">Ciudad</label>
                         <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <!-- <select class="form-control" readonly>
-                                <option value="Queretaro" selected>Querétaro</option>
-                            </select> -->
-                            <input value="Querétaro" class="form-control" type="text" name="direccion" required
-                                readonly>
-                        </div>
-
-                        <label for="telefono"> Teléfono </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].telefono %>" class="form-control" type="tel" name="telefono"
-                                required readonly>
-                        </div>
-
-
-                    </div>
-                    <div class="tamales-usuarioNoRegistrado-02-formulario-right">
-
-                        <label for="colonia">Colonia</label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= colonia[0].nombreDeColonia%>" class="form-control" type="text"
-                                name="direccion" required readonly>
-                        </div>
-
-                        <label for="direccion"> Dirección de entrega </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].telefono %>" class="form-control" type="text" name="direccion"
-                                required readonly>
-                        </div>
-
-                        <label for="referencia"> Referencia de la dirección de entrega </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].referenciaDomicilio %>" class="form-control" type="text"
-                                name="referencia" readonly>
-                        </div>
-
-                        <label for="email"> Correo electrónico </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].correoElectronico %>" class="form-control" type="email"
-                                name="email" required readonly>
+                            <input value="<%= usuario[0].correoElectronico %>" class="form-control" type="text"
+                                name="correo" required readonly>
                         </div>
                     </div>
                 </div>
+                <form action='admin-editar-perfil' method='POST'></form>
+                <div class='text-center'>
+                    <button class='btn btn-primary btn-md m-4 text-center' type='submit' name='actualizar' value='true'>
+                        Editar admin
+                    </button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -136,7 +115,6 @@
     </footer>
 
 
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- Bootstrap core JS-->
@@ -144,11 +122,12 @@
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $('#myTable').DataTable();
         });
-    </script>
+    </script> -->
+
 </body>
 
 </html>

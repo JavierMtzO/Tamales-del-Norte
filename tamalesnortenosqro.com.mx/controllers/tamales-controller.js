@@ -2,6 +2,8 @@ const nuevoCliente = require('../models/clientes.js');
 const nuevoProducto = require('../models/producto.js')
 const nuevaPromocion = require('../models/promocion.js')
 const nuevaDistribucion = require('../models/distribucion.js')
+const nuevoPedido = require('../models/iniciarPedido.js')
+const finalizarPedido = require('../models/pedido.js')
 
 exports.get = (request, response, next) => {
     nuevoProducto.fetchAll()
@@ -77,8 +79,26 @@ exports.postRegistro02 = (request, response, next) => {
     const cliente = new nuevoCliente(request.body.nombre, request.body.apellidos, request.body.telefono, request.body.direccion, request.body.referencia, request.body.email, idColonia, request.body.password);
     request.session.error = undefined;
     cliente.save()
-        .then(() => {
-            response.render('registro03');
+        .then(([rows, fieldData]) => {
+            request.session.idInicializarCliente = 0;
+            request.session.idInicializarCliente = rows.insertId;
+            const inicializarPedido = new nuevoPedido(request.session.idInicializarCliente);
+            inicializarPedido.save()
+                .then(([rowsPed, fieldData]) => {
+                    request.session.idInicializarPedido = 0;
+                    request.session.idInicializarPedido = rowsPed.insertId;
+                    const finalizarPed = new finalizarPedido('Init', 'Init', 'Inicializar pedidos del cliente', 'Init', 0, 0);
+                    finalizarPed.save(request.session.idInicializarPedido)
+                        .then(([rows, fieldData]) => {
+                            response.render('registro03');
+                        })
+                        .catch(err => console.log(err));
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+
         })
         .catch(err => {
             console.log(err);

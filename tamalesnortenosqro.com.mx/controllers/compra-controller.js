@@ -5,7 +5,7 @@ const finalizarPedido = require('../models/pedido.js')
 const nuevaDistribucion = require('../models/distribucion.js')
 const db = require('../util/database');
 const TWILIO_ID = 'AC3c04cd07683d579474a22d910438ffc4';
-const TWILIO_SK = '58fa525fac32a75b86b3d996777aba49';
+const TWILIO_SK = '09c02c39838541c4eb51d477cf10dc22';
 
 const client = require('twilio')(TWILIO_ID, TWILIO_SK);
 
@@ -176,8 +176,6 @@ exports.getCarrito = (request, response, next) => {
         .catch(err => console.log(err));
 }
 exports.postCarrito = (request, response, next) => {
-
-
     if (request.body.finalizar) {
         response.redirect('compra04');
     }
@@ -189,8 +187,6 @@ exports.postCarrito = (request, response, next) => {
                 request.session.total = 0;
                 request.session.costoTotal = 0;
                 for (let productos of rows) {
-                    // console.log(request.session.total);
-                    // console.log(request.session.costoTotal);
                     let stringCarrito = "request.body."
                     let skuProductoCarrito = productos.sku;
                     stringCarrito = stringCarrito + skuProductoCarrito;
@@ -242,7 +238,6 @@ exports.postCarrito = (request, response, next) => {
     }
 }
 exports.getCompra04 = (request, response, next) => {
-
     client.messages
         .create({
             mediaUrl: ['https://4.bp.blogspot.com/-NMtSes4RP84/XBf0SSUToRI/AAAAAAAAEVA/kMQv7waP8UkFmP4N7nBY2FAbU-kMVcqOwCLcBGAs/s1600/654646.jpg'],

@@ -25,6 +25,8 @@ router.post('/login', usuariosController.postLogin);
 
 router.get('/logout', usuariosController.logout);
 
+router.get('/admin-perfil', isAuth, usuariosController.getAdminPerfil);
+
 router.get('/admin-pedidos', isAuth, usuariosController.getAdminPedidos);
 router.post('/admin-pedidos', isAuth, usuariosController.postAdminPedidos);
 router.get('/admin-editar-pedidos', isAuth, usuariosController.getAdminEditarPedidos);

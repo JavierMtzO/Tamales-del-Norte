@@ -35,20 +35,41 @@ module.exports = class nuevoCliente {
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
+    static delete(idCliente) {
+        return db.execute('DELETE FROM cliente WHERE idCliente = ?',
+            [idCliente])
+            .then(() => {
+                return db.execute('DELETE FROM pedido WHERE idCliente = ?',
+                    [idCliente]);
+            });
+    }
+
     static fetchAll() {
-        return db.execute('SELECT * FROM cliente');
+        return db.execute('SELECT c.idCliente, c.nombre, c.apellidos, d.nombreDeColonia, SUM(costoTotal) as totalGastado FROM cliente c, distribucion d, pedido p WHERE c.idDistribucion = d.idDistribucion AND p.idCliente = c.idCliente GROUP BY c.nombre, c.apellidos, d.nombreDeColonia, c.idCliente');
     }
     static fetchOne(email) {
         return db.execute('SELECT * FROM cliente WHERE correoElectronico = ?', [email]);
     }
+
+    static fetchCliente(id) {
+        return db.execute('SELECT * FROM cliente c, pedido pe, distribucion d WHERE c.idCliente = pe.idCliente AND d.idDistribucion = c.idDistribucion AND c.idCliente = ?', [id]);
+    }
+
     static login(correoElectronico, password) {
         return db.execute('SELECT * FROM cliente WHERE ');
     }
     static fetchPedidos(id) {
-        return db.execute('SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente =  ?', [id]);
+        return db.execute('SELECT diaEntrega, estatus, descripcion, costoTotal, cantidadTotal FROM pedido p, cliente c WHERE p.idCliente = c.idCliente AND p.idCliente =  ? AND costoTotal > 0', [id]);
     }
     static fetchColonia(id) {
         return db.execute('SELECT * FROM distribucion d, cliente c WHERE d.idDistribucion = c.idDistribucion AND idCliente =  ?', [id]);
     }
+
+    static update(nom, ap, tel, dir, ref, email, dist, id) {
+        return db.execute('UPDATE cliente SET nombre = ?, apellidos = ?, telefono = ?, direccion = ?, referenciaDomicilio = ?, correoElectronico = ?, idDistribucion = ? WHERE idCliente = ?',
+            [nom, ap, tel, dir, ref, email, dist, id]
+        );
+    }
+
 
 }
