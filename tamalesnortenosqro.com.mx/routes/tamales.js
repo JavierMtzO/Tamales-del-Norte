@@ -26,6 +26,9 @@ router.post('/login', usuariosController.postLogin);
 router.get('/logout', usuariosController.logout);
 
 router.get('/admin-perfil', isAuth, usuariosController.getAdminPerfil);
+router.post('/admin-perfil', isAuth, usuariosController.postAdminPerfil);
+router.get('/admin-editar-perfil', isAuth, usuariosController.getAdminEditarPerfil);
+router.post('/admin-editar-perfil', isAuth, usuariosController.postAdminEditarPerfil);
 
 router.get('/admin-pedidos', isAuth, usuariosController.getAdminPedidos);
 router.post('/admin-pedidos', isAuth, usuariosController.postAdminPedidos);
@@ -58,6 +61,10 @@ router.get('/compra04', isAuth, compraController.getCompra04);
 router.post('/compra04', isAuth, compraController.postCompra04);
 
 router.get('/perfil', isAuth, usuariosController.getPerfil);
+router.post('/perfil', isAuth, usuariosController.postPerfil);
+router.get('/editar-perfil', isAuth, usuariosController.getEditarPerfil);
+router.post('/editar-perfil', isAuth, usuariosController.postEditarPerfil);
+
 router.get('/pedidos', isAuth, usuariosController.getPedidos);
 
 module.exports = router;

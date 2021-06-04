@@ -63,7 +63,10 @@ exports.postLogin = (request, response, next) => {
         });
 
 };
+
+
 exports.getPerfil = (request, response, next) => {
+    request.session.conterror = undefined;
     nuevoCliente.fetchOne(request.session.email)
         .then(([rowsUsuario, fieldData]) => {
             nuevoCliente.fetchColonia(request.session.idCliente)
@@ -80,6 +83,43 @@ exports.getPerfil = (request, response, next) => {
         });
 
 }
+exports.postPerfil = (request, response, next) => {
+    response.redirect('/editar-perfil');
+}
+exports.getEditarPerfil = (request, response, next) => {
+    nuevoCliente.fetchOne(request.session.email)
+        .then(([rowsUsuario, fieldData]) => {
+            nuevoCliente.fetchColonia(request.session.idCliente)
+                .then(([rowsColonia, fieldData]) => {
+                    response.render('clienteEditarPerfil', {
+                        error: request.session.conterror !== undefined ? request.session.conterror : false,
+                        usuario: rowsUsuario,
+                        colonia: rowsColonia
+                    });
+                }).catch(err => {
+                    console.log(err);
+                });
+        }).catch(err => {
+            console.log(err);
+        });
+
+}
+exports.postEditarPerfil = (request, response, next) => {
+    request.session.conterror = undefined;
+    if (request.body.password === request.body.retype) {
+        nuevoCliente.updatePass(request.session.idCliente, request.body.password)
+            .then(([rows, fieldData]) => {
+                response.redirect('/perfil');
+            }).catch(err => {
+                console.log(err);
+            });
+    } else {
+        request.session.conterror = "No coinciden las contraseñas insertadas";
+        response.redirect('/editar-perfil');
+    }
+}
+
+
 exports.getPedidos = (request, response, next) => {
     nuevoCliente.fetchPedidos(request.session.idCliente)
         .then(([rows, fieldData]) => {
@@ -91,7 +131,10 @@ exports.getPedidos = (request, response, next) => {
         });
 }
 
+
+
 exports.getAdminPerfil = (request, response, next) => {
+    request.session.conterror = undefined;
     nuevoAdmin.fetchPerfil(request.session.idAdmin)
         .then(([rows, fieldData]) => {
             response.render('adminPerfil', {
@@ -101,6 +144,35 @@ exports.getAdminPerfil = (request, response, next) => {
             console.log(err);
         });
 }
+exports.postAdminPerfil = (request, response, next) => {
+    response.redirect('/admin-editar-perfil');
+}
+exports.getAdminEditarPerfil = (request, response, next) => {
+    nuevoAdmin.fetchPerfil(request.session.idAdmin)
+        .then(([rows, fieldData]) => {
+            response.render('adminEditarPerfil', {
+                error: request.session.conterror !== undefined ? request.session.conterror : false,
+                usuario: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+exports.postAdminEditarPerfil = (request, response, next) => {
+    request.session.conterror = undefined;
+    if (request.body.password === request.body.retype) {
+        nuevoAdmin.updatePass(request.session.idAdmin, request.body.password)
+            .then(([rows, fieldData]) => {
+                response.redirect('/admin-perfil');
+            }).catch(err => {
+                console.log(err);
+            });
+    } else {
+        request.session.conterror = "No coinciden las contraseñas insertadas";
+        response.redirect('/admin-editar-perfil');
+    }
+}
+
 
 
 exports.getAdminPedidos = (request, response, next) => {

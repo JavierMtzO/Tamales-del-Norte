@@ -30,6 +30,18 @@ module.exports = class nuevoAdmin {
 
     }
 
+    static updatePass(id, password) {
+        return bcrypt.hash(password, 12)
+            .then((password) => {
+                return db.execute('UPDATE admin SET password = ? WHERE idAdmin = ?',
+                    [password, id]
+                );
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute('SELECT * FROM admin');

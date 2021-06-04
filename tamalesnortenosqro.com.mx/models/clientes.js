@@ -34,6 +34,18 @@ module.exports = class nuevoCliente {
 
     }
 
+    static updatePass(id, password) {
+        return bcrypt.hash(password, 12)
+            .then((password) => {
+                return db.execute('UPDATE cliente SET password = ? WHERE idCliente = ?',
+                    [password, id]
+                );
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static delete(idCliente) {
         return db.execute('DELETE FROM cliente WHERE idCliente = ?',
