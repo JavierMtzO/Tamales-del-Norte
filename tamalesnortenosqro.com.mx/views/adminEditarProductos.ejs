@@ -42,14 +42,13 @@
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
-                        href="/admin-perfil">Ver
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin-perfil">Ver
                         Perfil</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-pedidos">Pedidos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-clientes">Clientes</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
                         href="/admin-productos">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-distribucion">Distribución</a>
@@ -66,36 +65,70 @@
 
             <!-- Page content-->
             <div style="padding: 2%;" class="container">
-                <h4 class="text-center">Admin: <%=usuario[0].idAdmin %></h4>
-                <div class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
-                    <div class="tamales-usuarioNoRegistrado-02-formulario-left">
-                        <label for="nombre"> Nombre </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].nombre %>" class="form-control" type="text" name="nombre"
-                                required readonly>
+                <h3 class="text-center m-3"> Producto número: <%= producto.idProducto%></h3>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-12 mb-4">
+                        <!--Card-->
+                        <div class="card p-3">
+                            <!--Card content-->
+                            <!--Grid row-->
+                            <form
+                                onSubmit="if(!confirm('¿Está seguro/a que quiere actualizar este producto?')){return false;} "
+                                action='admin-editar-productos' method='POST'>
+                                <div class="row">
+                                    <!--Grid column-->
+                                    <div class="col-md-6 mb-2">
+                                        <!--firstName-->
+                                        <div class="md-form ">
+                                            <label for="Nombre" class="">Nombre del producto</label>
+                                            <input type="text" name="nombre" id="Nombre" class="form-control"
+                                                value="<%= producto.nombreProducto%> ">
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+                                    <!--Grid column-->
+                                    <div class="md-form mb-3">
+                                        <!--lastName-->
+                                        <div class="md-form">
+                                            <label for="descripcion" class="">Descripción</label>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control"
+                                                value="<%= producto.descripcion%>">
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+                                </div>
+                                <!--Grid row-->
+                                <!--Grid row-->
+                                <div class="row">
+                                    <!--Grid column-->
+                                    <div class="col-lg-4 col-md-12 mb-4">
+                                        <label for="Precio" class="">Precio del producto</label>
+                                        <input type="text" name="precio" id="Precio" class="form-control"
+                                            value="<%= producto.precio%>">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 mb-4 pt-4">
+
+                                        <button class='btn btn-success btn-md' type='submit' name='actualizar'
+                                            value='true'>Actualizar producto</button>
+
+                                    </div>
+
+                                    <!--Grid column-->
+                                </div>
+                            </form>
+                            <form
+                                onSubmit="if(!confirm('¿Está seguro/a que quiere borrar este producto?')){return false;} "
+                                action='admin-editar-productos' method='POST'>
+                                <button class='btn btn-danger btn-md' type='submit' name='eliminar'
+                                    value='Eliminar'>Eliminar producto</button>
+                            </form>
                         </div>
 
-                        <label for="apellidos"> Apellidos </label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].apellidos %>" class="form-control" type="text" name="apellidos"
-                                required readonly>
-                        </div>
-
-                        <label for="ciudad">Correo electrónico</label>
-                        <div class="tamales-usuarioNoRegistrado-02-formulario-box">
-                            <input value="<%= usuario[0].correoElectronico %>" class="form-control" type="text"
-                                name="correo" required readonly>
-                        </div>
+                        <!--/.Card-->
                     </div>
+
                 </div>
-                <form action='admin-perfil' method='POST'>
-                    <div class='text-center'>
-                        <button class='btn btn-primary btn-md m-4 text-center' type='submit' name='actualizar'
-                            value='true'>
-                            Cambiar contraseña
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

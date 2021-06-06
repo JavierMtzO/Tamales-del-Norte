@@ -2,6 +2,7 @@ const nuevoCliente = require('../models/clientes.js');
 const nuevoAdmin = require('../models/admin.js');
 const nuevaDistribucion = require('../models/distribucion.js')
 const nuevoPedido = require('../models/pedido.js')
+const nuevoProducto = require('../models/producto.js')
 const bcrypt = require('bcryptjs');
 
 exports.logout = (request, response, next) => {
@@ -271,4 +272,83 @@ exports.postAdminEditarClientes = (request, response, next) => {
     }
 
 
+}
+
+exports.getAdminProductos = (request, response, next) => {
+    request.session.adminIdProducto = 0;
+    nuevoProducto.fetchAllProductos()
+        .then(([rows, fieldData]) => {
+            response.render('adminProductos', {
+                productos: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+exports.postAdminProductos = (request, response, next) => {
+    request.session.adminIdProducto = request.body.editarProducto;
+    response.redirect('/admin-editar-productos');
+}
+exports.getAdminEditarProductos = (request, response, next) => {
+    nuevoProducto.fetchOne(request.session.adminIdProducto)
+        .then(([rows, fieldData]) => {
+            response.render('adminEditarProductos', {
+                producto: rows[0]
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+
+}
+exports.postAdminEditarProductos = (request, response, next) => {
+    if (request.body.actualizar === 'true') {
+        nuevoProducto.update(request.body.nombre, request.body.descripcion, request.body.precio, request.session.adminIdProducto)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-productos');
+            }).catch(err => {
+                console.log(err);
+            });
+    } else {
+        nuevoProducto.delete(request.session.adminIdProducto)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-productos');
+            }).catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+
+exports.getAdminUsuarios = (request, response, next) => {
+    request.session.errorAgregarUsuario = undefined;
+    request.session.adminIdAdmin = 0;
+    nuevoAdmin.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('adminUsuarios', {
+                admins: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+exports.postAdminUsuarios = (request, response, next) => {
+    response.redirect('/admin-agregar-usuarios');
+}
+exports.getAdminEditarUsuarios = (request, response, next) => {
+    response.render('adminAgregarUsuario', {
+        error: request.session.errorAgregarUsuario !== undefined ? request.session.errorAgregarUsuario : false
+    });
+
+}
+exports.postAdminEditarUsuarios = (request, response, next) => {
+    request.session.errorAgregarUsuario = undefined;
+    const admin = new nuevoAdmin(request.body.nombre, request.body.apellidos, request.body.email, request.body.password);
+    admin.save()
+        .then(([rows, fieldData]) => {
+            response.redirect('/admin-usuarios');
+        }).catch(err => {
+            console.log(err);
+            request.session.errorAgregarUsuario = "Este correo electrónico ya está registrado";
+            response.redirect('/admin-agregar-usuarios');
+        });
 }

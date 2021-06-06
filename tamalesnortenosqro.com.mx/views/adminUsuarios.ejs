@@ -46,7 +46,7 @@
                         Perfil</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-pedidos">Pedidos</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-clientes">Clientes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-productos">Productos</a>
@@ -54,7 +54,7 @@
                         href="/admin-distribucion">Distribución</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-promociones">Promociones</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
                         href="/admin-usuarios">Usuarios</a>
                     <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
                         href="/logout">
@@ -70,12 +70,15 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Apellidos</th>
-                            <th>Colonia</th>
-                            <th>Total de compras</th>
-                            <th>Acciones</th>
+                            <th>Correo electrónico</th>
                         </tr>
                     </thead>
                 </table>
+                <form action='admin-usuarios' method='POST'>
+                    <button class='btn btn-primary btn-sm' type='submit' name='agregarUsuario' value='true'>
+                        Agregar Nuevo Usuario
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -104,13 +107,11 @@
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         var data = [
-        <% for (let cliente of clientes) {%>
+        <% for (let admin of admins) {%>
             [
-                "<%= cliente.nombre%>",
-                "<%= cliente.apellidos%>",
-                "<%= cliente.nombreDeColonia%>",
-                "$<%= cliente.totalGastado%> pesos",
-                "<form action='admin-clientes' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarCliente' value='<%= cliente.idCliente%>'>Ver Cliente</button></form>"
+                "<%= admin.nombre%>",
+                "<%= admin.apellidos%>",
+                "<%= admin.correoElectronico%>"
             ], <% } %>
         ];
         $(document).ready(function () {

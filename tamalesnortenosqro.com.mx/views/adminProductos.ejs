@@ -46,9 +46,9 @@
                         Perfil</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-pedidos">Pedidos</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
-                        href="/admin-clientes">Clientes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                        href="/admin-clientes">Clientes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
                         href="/admin-productos">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-distribucion">Distribución</a>
@@ -68,10 +68,10 @@
                 <table id="myTable" class="table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Colonia</th>
-                            <th>Total de compras</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Descripción</th>
+                            <th>Ventas por unidades (Último mes)</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -104,13 +104,13 @@
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         var data = [
-        <% for (let cliente of clientes) {%>
+        <% for (let producto of productos) {%>
             [
-                "<%= cliente.nombre%>",
-                "<%= cliente.apellidos%>",
-                "<%= cliente.nombreDeColonia%>",
-                "$<%= cliente.totalGastado%> pesos",
-                "<form action='admin-clientes' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarCliente' value='<%= cliente.idCliente%>'>Ver Cliente</button></form>"
+                "<%= producto.nombreProducto%>",
+                "$<%= producto.precio%> pesos",
+                "<%= producto.descripcion%>",
+                "<%= producto.ventas%>",
+                "<form action='admin-productos' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarProducto' value='<%= producto.idProducto%>'>Ver Producto</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

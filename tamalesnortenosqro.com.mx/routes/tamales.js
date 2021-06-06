@@ -40,6 +40,15 @@ router.post('/admin-clientes', isAuth, usuariosController.postAdminClientes);
 router.get('/admin-editar-clientes', isAuth, usuariosController.getAdminEditarClientes);
 router.post('/admin-editar-clientes', isAuth, usuariosController.postAdminEditarClientes);
 
+router.get('/admin-productos', isAuth, usuariosController.getAdminProductos);
+router.post('/admin-productos', isAuth, usuariosController.postAdminProductos);
+router.get('/admin-editar-productos', isAuth, usuariosController.getAdminEditarProductos);
+router.post('/admin-editar-productos', isAuth, usuariosController.postAdminEditarProductos);
+
+router.get('/admin-usuarios', isAuth, usuariosController.getAdminUsuarios);
+router.post('/admin-usuarios', isAuth, usuariosController.postAdminUsuarios);
+router.get('/admin-agregar-usuarios', isAuth, usuariosController.getAdminEditarUsuarios);
+router.post('/admin-agregar-usuarios', isAuth, usuariosController.postAdminEditarUsuarios);
 
 
 
