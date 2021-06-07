@@ -5,9 +5,9 @@ const isAuth = require('../util/is-auth.js');
 
 path = require('path')
 
-router.use('/css', express.static(path.join(__dirname, 'public/css')));
-router.use('/js', express.static(path.join(__dirname, 'public/js')));
-router.use('/img', express.static(path.join(__dirname, 'public/img')));
+// router.use('/css', express.static(path.join(__dirname, 'public/css')));
+// router.use('/js', express.static(path.join(__dirname, 'public/js')));
+// router.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 const tamalesController = require('../controllers/tamales-controller');
 const usuariosController = require('../controllers/usuarios-controller');
@@ -46,11 +46,15 @@ router.get('/admin-productos', isAuth, usuariosController.getAdminProductos);
 router.post('/admin-productos', isAuth, usuariosController.postAdminProductos);
 router.get('/admin-editar-productos', isAuth, usuariosController.getAdminEditarProductos);
 router.post('/admin-editar-productos', isAuth, usuariosController.postAdminEditarProductos);
+router.get('/admin-agregar-productos', isAuth, usuariosController.getAdminAgregarProductos);
+router.post('/admin-agregar-productos', isAuth, usuariosController.postAdminAgregarProductos);
 
 router.get('/admin-distribucion', isAuth, usuariosController.getAdminDistribucion);
 router.post('/admin-distribucion', isAuth, usuariosController.postAdminDistribucion);
 router.get('/admin-editar-distribucion', isAuth, usuariosController.getAdminEditarDistribucion);
 router.post('/admin-editar-distribucion', isAuth, usuariosController.postAdminEditarDistribucion);
+router.get('/admin-agregar-distribucion', isAuth, usuariosController.getAdminAgregarDistribucion);
+router.post('/admin-agregar-distribucion', isAuth, usuariosController.postAdminAgregarDistribucion);
 
 router.get('/admin-promociones', isAuth, usuariosController.getAdminPromocion);
 router.post('/admin-promociones', isAuth, usuariosController.postAdminPromocion);

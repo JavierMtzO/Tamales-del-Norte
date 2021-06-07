@@ -69,6 +69,7 @@
                     <!--Grid column-->
                     <div class="col-md-12 mb-4">
                         <!--Card-->
+                        <h3 class="text-center"> Agregar nuevo pedido </h3>
                         <div class="card p-3">
                             <!--Card content-->
                             <!--Grid row-->
@@ -85,6 +86,23 @@
                                                     <%= cliente.nombre + " " + cliente.apellidos %></option>
                                                 <% }%>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2 p-3">
+                                        <!--firstName-->
+                                        <div class="col-md-12 mb-2 md-form form-check">
+                                            <input class="form-check-input" type="radio" name="entrega" value="sucursal"
+                                                checked>
+                                            <label class="form-check-label">
+                                                <h6> Recoger en sucursal </h6>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 mb-2 md-form form-check">
+                                            <input class="form-check-input" type="radio" name="entrega"
+                                                value="domicilio">
+                                            <label class="form-check-label">
+                                                <h6> Envío a domicilio </h6>
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row flex-wrap justify-content-center align-items-center">

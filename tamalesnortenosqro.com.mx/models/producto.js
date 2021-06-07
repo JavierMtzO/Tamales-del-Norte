@@ -3,18 +3,17 @@ const db = require('../util/database');
 module.exports = class nuevoProducto {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(nombreProducto, precio, existencia, descripcion, imagenProducto) {
+    constructor(nombreProducto, precio, descripcion, imagenProducto) {
         this.nombreProducto = nombreProducto;
         this.precio = precio;
-        this.existencia = existencia;
         this.descripcion = descripcion;
         this.imagenProducto = imagenProducto;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO producto (nombreProducto, precio, existencia, descripcion, imagenProducto) VALUES (?, ?, ?, ?, ?)',
-            [this.nombreProducto, this.precio, this.existencia, this.descripcion, this.imagenProducto]
+        return db.execute('INSERT INTO producto (nombreProducto, precio, descripcion, imagenProducto) VALUES (?, ?, ?, ?)',
+            [this.nombreProducto, this.precio, this.descripcion, this.imagenProducto]
         );
     }
 
@@ -41,5 +40,6 @@ module.exports = class nuevoProducto {
             [idProducto]
         );
     }
+
 
 }

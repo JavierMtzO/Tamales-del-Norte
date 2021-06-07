@@ -4,6 +4,8 @@ const nuevaDistribucion = require('../models/distribucion.js')
 const nuevoPedido = require('../models/pedido.js')
 const nuevoProducto = require('../models/producto.js')
 const nuevaPromocion = require('../models/promocion.js')
+const pedidoNuevo = require('../models/iniciarPedido.js')
+const pedidoProducto = require('../models/pedidoproducto.js')
 const bcrypt = require('bcryptjs');
 
 exports.logout = (request, response, next) => {
@@ -239,7 +241,60 @@ exports.getAdminAgregarPedidos = (request, response, next) => {
 
 }
 exports.postAdminAgregarPedidos = (request, response, next) => {
-    console.log(request.body);
+    nuevoProducto.fetchAll()
+        .then(([rows, fieldData]) => {
+            request.session.descripcion = "";
+            request.session.total = 0;
+            request.session.costoTotal = 0;
+            for (let producto of rows) {
+                let string = "request.body."
+                let skuProducto = producto.sku;
+                string = string + skuProducto;
+                let costo = parseInt(eval(string)) * producto.precio;
+                request.session.total += parseInt(eval(string));
+                request.session.costoTotal += costo;
+                if (parseInt(eval(string)) > 0) {
+                    var auxiliar = parseInt(eval(string));
+                    var aux = auxiliar.toString();
+                    request.session.descripcion += skuProducto + ": " + aux + ", ";
+                }
+            }
+            request.session.descripcion = request.session.descripcion.slice(0, -2);
+            if (request.body.entrega === 'domicilio') {
+                request.session.costoTotal += 50;
+            }
+            pedidoNuevo.fetchDia(request.body.cliente)
+                .then(([rowsDia, fieldData]) => {
+                    request.session.fechaEntrega = "";
+                    request.session.fechaEntrega += rowsDia[0].diaDeEntrega + " de " + rowsDia[0].horaInicioEntrega + " a " + rowsDia[0].horaFinalEntrega;
+                    pedidoNuevo.savePedidoAdmin(request.session.fechaEntrega, 'En espera de pago', request.session.descripcion, request.body.entrega, request.session.total, request.session.costoTotal, request.body.cliente)
+                        .then(([rowsPed, fieldData]) => {
+                            request.session.idPedido = rowsPed.insertId;
+                            for (let producto of rows) {
+                                let string = "request.body."
+                                let skuProducto = producto.sku;
+                                string = string + skuProducto;
+                                if (parseInt(eval(string)) > 0) {
+                                    request.session.pedprod = new pedidoProducto(producto.idProducto, request.session.idPedido, parseInt(eval(string)));
+                                    request.session.pedprod.save()
+                                        .then(() => {
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                        });
+                                }
+                            }
+                            response.redirect('admin-pedidos');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        })
+        .catch(err => console.log(err));
 }
 
 
@@ -337,6 +392,26 @@ exports.postAdminEditarProductos = (request, response, next) => {
             });
     }
 }
+exports.getAdminAgregarProductos = (request, response, next) => {
+    response.render('adminAgregarProducto');
+}
+exports.postAdminAgregarProductos = (request, response, next) => {
+    let imageProducto = request.file.path;
+    imageProducto = imageProducto.substring(7);
+    const productoNuevo = new nuevoProducto(request.body.nombre, request.body.precio, request.body.descripcion, imageProducto);
+    productoNuevo.save()
+        .then(([rows, fieldData]) => {
+            const pedproducto = new pedidoProducto(rows.insertId, 10001, 0);
+            pedproducto.save()
+                .then(([rows, fieldData]) => {
+                    response.redirect('/admin-productos');
+                }).catch(err => {
+                    console.log(err);
+                });
+        }).catch(err => {
+            console.log(err);
+        });
+}
 
 
 exports.getAdminDistribucion = (request, response, next) => {
@@ -387,6 +462,20 @@ exports.postAdminEditarDistribucion = (request, response, next) => {
                 console.log(err);
             });
     }
+}
+exports.getAdminAgregarDistribucion = (request, response, next) => {
+    response.render('adminAgregarDistribucion');
+
+}
+exports.postAdminAgregarDistribucion = (request, response, next) => {
+    const dist = new nuevaDistribucion(request.body.dia, request.body.colonia, request.body.horaInicio, request.body.horaFinal);
+    dist.save()
+        .then(([rows, fieldData]) => {
+            response.redirect('admin-distribucion');
+        }).catch(err => {
+            console.log(err);
+        });
+
 }
 
 exports.getAdminPromocion = (request, response, next) => {

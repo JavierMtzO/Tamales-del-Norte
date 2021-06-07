@@ -19,10 +19,19 @@ module.exports = class pedido {
         );
     }
 
+    // static delete(idPedido) {
+    //     return db.execute('DELETE FROM pedido WHERE idPedido = ?',
+    //         [idPedido]
+    //     );
+    // }
+
     static delete(idPedido) {
         return db.execute('DELETE FROM pedido WHERE idPedido = ?',
-            [idPedido]
-        );
+            [idPedido])
+            .then(() => {
+                return db.execute('DELETE FROM pedidoproducto WHERE idPedido = ?',
+                    [idPedido]);
+            });
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
@@ -47,5 +56,6 @@ module.exports = class pedido {
     static fetchTotal() {
         return db.execute('SELECT SUM(costoTotal) FROM cliente c, pedido p WHERE p.idCliente = c.idCliente GROUP BY c.nombre');
     }
+
 
 }
