@@ -34,6 +34,8 @@ router.get('/admin-pedidos', isAuth, usuariosController.getAdminPedidos);
 router.post('/admin-pedidos', isAuth, usuariosController.postAdminPedidos);
 router.get('/admin-editar-pedidos', isAuth, usuariosController.getAdminEditarPedidos);
 router.post('/admin-editar-pedidos', isAuth, usuariosController.postAdminEditarPedidos);
+router.get('/admin-agregar-pedidos', isAuth, usuariosController.getAdminAgregarPedidos);
+router.post('/admin-agregar-pedidos', isAuth, usuariosController.postAdminAgregarPedidos);
 
 router.get('/admin-clientes', isAuth, usuariosController.getAdminClientes);
 router.post('/admin-clientes', isAuth, usuariosController.postAdminClientes);
@@ -45,11 +47,20 @@ router.post('/admin-productos', isAuth, usuariosController.postAdminProductos);
 router.get('/admin-editar-productos', isAuth, usuariosController.getAdminEditarProductos);
 router.post('/admin-editar-productos', isAuth, usuariosController.postAdminEditarProductos);
 
+router.get('/admin-distribucion', isAuth, usuariosController.getAdminDistribucion);
+router.post('/admin-distribucion', isAuth, usuariosController.postAdminDistribucion);
+router.get('/admin-editar-distribucion', isAuth, usuariosController.getAdminEditarDistribucion);
+router.post('/admin-editar-distribucion', isAuth, usuariosController.postAdminEditarDistribucion);
+
+router.get('/admin-promociones', isAuth, usuariosController.getAdminPromocion);
+router.post('/admin-promociones', isAuth, usuariosController.postAdminPromocion);
+router.get('/admin-editar-promociones', isAuth, usuariosController.getAdminEditarPromocion);
+router.post('/admin-editar-promociones', isAuth, usuariosController.postAdminEditarPromocion);
+
 router.get('/admin-usuarios', isAuth, usuariosController.getAdminUsuarios);
 router.post('/admin-usuarios', isAuth, usuariosController.postAdminUsuarios);
 router.get('/admin-agregar-usuarios', isAuth, usuariosController.getAdminEditarUsuarios);
 router.post('/admin-agregar-usuarios', isAuth, usuariosController.postAdminEditarUsuarios);
-
 
 
 router.get('/inicio', isAuth, tamalesController.getInicio);

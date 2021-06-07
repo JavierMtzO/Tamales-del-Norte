@@ -52,9 +52,9 @@
                         href="/admin-productos">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-distribucion">Distribución</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                        href="/admin-promociones">Promociones</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
+                        href="/admin-promociones">Promociones</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-usuarios">Usuarios</a>
                     <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
                         href="/logout">
@@ -65,20 +65,12 @@
 
             <!-- Page content-->
             <div style="padding: 2%;" class="container">
-                <div class="p-3">
-                    <form action='admin-usuarios' method='POST'>
-
-                        <button class='btn btn-success btn-sm' type='submit' name='agregarUsuario' value='true'>
-                            Agregar Nuevo Usuario
-                        </button>
-                </div>
-                </form>
                 <table id="myTable" class="table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Correo electrónico</th>
+                            <th>Promoción</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                 </table>
@@ -110,11 +102,11 @@
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         var data = [
-        <% for (let admin of admins) {%>
+        <% for (let promocion of promociones) {%>
             [
-                "<%= admin.nombre%>",
-                "<%= admin.apellidos%>",
-                "<%= admin.correoElectronico%>"
+                "<%= promocion.idPromocion%>",
+                "<%= promocion.descripcion%>",
+                "<form action='admin-promociones' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarPromocion' value='<%= promocion.idPromocion%>'>Ver Promoción</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

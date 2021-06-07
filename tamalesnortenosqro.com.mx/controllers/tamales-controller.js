@@ -42,41 +42,7 @@ exports.getRegistro02 = (request, response, next) => {
 
 };
 exports.postRegistro02 = (request, response, next) => {
-    var colonia = request.body.colonia;
-    var idColonia;
-    switch (colonia) {
-        case "Tejeda":
-            idColonia = 8384;
-            break;
-        case "Jurica":
-            idColonia = 8385;
-            break;
-        case "El Refugio":
-            idColonia = 8386;
-            break;
-        case "Juriquilla":
-            idColonia = 8387;
-            break;
-        case "La Vista":
-            idColonia = 8388;
-            break;
-        case "Sonterra":
-            idColonia = 8389;
-            break;
-        case "Balvanegra":
-            idColonia = 8390;
-            break;
-        case "Zibata":
-            idColonia = 8391;
-            break;
-        case "Campanario":
-            idColonia = 8392;
-            break;
-        case "Cimatario":
-            idColonia = 8393;
-            break;
-    }
-    const cliente = new nuevoCliente(request.body.nombre, request.body.apellidos, request.body.telefono, request.body.direccion, request.body.referencia, request.body.email, idColonia, request.body.password);
+    const cliente = new nuevoCliente(request.body.nombre, request.body.apellidos, request.body.telefono, request.body.direccion, request.body.referencia, request.body.email, request.body.colonia, request.body.password);
     request.session.error = undefined;
     cliente.save()
         .then(([rows, fieldData]) => {

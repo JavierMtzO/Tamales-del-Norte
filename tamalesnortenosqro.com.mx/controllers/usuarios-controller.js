@@ -3,6 +3,7 @@ const nuevoAdmin = require('../models/admin.js');
 const nuevaDistribucion = require('../models/distribucion.js')
 const nuevoPedido = require('../models/pedido.js')
 const nuevoProducto = require('../models/producto.js')
+const nuevaPromocion = require('../models/promocion.js')
 const bcrypt = require('bcryptjs');
 
 exports.logout = (request, response, next) => {
@@ -133,7 +134,6 @@ exports.getPedidos = (request, response, next) => {
 }
 
 
-
 exports.getAdminPerfil = (request, response, next) => {
     request.session.conterror = undefined;
     nuevoAdmin.fetchPerfil(request.session.idAdmin)
@@ -220,6 +220,26 @@ exports.postAdminEditarPedidos = (request, response, next) => {
     }
 
 
+}
+exports.getAdminAgregarPedidos = (request, response, next) => {
+    nuevoProducto.fetchAll()
+        .then(([rowsProductos, fieldData]) => {
+            nuevoCliente.fetchAll()
+                .then(([rowsCliente, fieldData]) => {
+                    response.render('adminAgregarPedidos', {
+                        clientes: rowsCliente,
+                        productos: rowsProductos
+                    });
+                }).catch(err => {
+                    console.log(err);
+                });
+        }).catch(err => {
+            console.log(err);
+        });
+
+}
+exports.postAdminAgregarPedidos = (request, response, next) => {
+    console.log(request.body);
 }
 
 
@@ -318,6 +338,100 @@ exports.postAdminEditarProductos = (request, response, next) => {
     }
 }
 
+
+exports.getAdminDistribucion = (request, response, next) => {
+    request.session.editarDistribucion = 0;
+    nuevaDistribucion.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('adminDistribucion', {
+                distribuciones: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+exports.postAdminDistribucion = (request, response, next) => {
+    request.session.editarDistribucion = request.body.editarDistribucion;
+    response.redirect('/admin-editar-distribucion');
+}
+exports.getAdminEditarDistribucion = (request, response, next) => {
+    nuevaDistribucion.fetchOne(request.session.editarDistribucion)
+        .then(([rowsOne, fieldData]) => {
+            nuevaDistribucion.fetchAll()
+                .then(([rows, fieldData]) => {
+                    response.render('adminEditarDistribucion', {
+                        dist: rowsOne[0],
+                        distribuciones: rows
+                    });
+                }).catch(err => {
+                    console.log(err);
+                });
+        }).catch(err => {
+            console.log(err);
+        });
+
+}
+exports.postAdminEditarDistribucion = (request, response, next) => {
+    if (request.body.actualizar === 'true') {
+        nuevaDistribucion.update(request.body.dia, request.body.horaInicio, request.body.horaFinal, request.session.editarDistribucion)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-distribucion');
+            }).catch(err => {
+                console.log(err);
+            });
+    } else {
+        nuevaDistribucion.delete(request.session.editarDistribucion)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-distribucion');
+            }).catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+exports.getAdminPromocion = (request, response, next) => {
+    request.session.adminIdPromocion = 0;
+    nuevaPromocion.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('adminPromocion', {
+                promociones: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+}
+exports.postAdminPromocion = (request, response, next) => {
+    request.session.adminIdPromocion = request.body.editarPromocion;
+    response.redirect('/admin-editar-promociones');
+}
+exports.getAdminEditarPromocion = (request, response, next) => {
+    nuevaPromocion.fetchOne(request.session.adminIdPromocion)
+        .then(([rows, fieldData]) => {
+            response.render('adminEditarPromocion', {
+                promocion: rows[0]
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+
+}
+exports.postAdminEditarPromocion = (request, response, next) => {
+    if (request.body.actualizar === 'true') {
+        nuevaPromocion.update(request.body.descripcion, request.session.adminIdPromocion)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-promociones');
+            }).catch(err => {
+                console.log(err);
+            });
+    } else {
+        nuevaPromocion.delete(request.session.adminIdPromocion)
+            .then(([rows, fieldData]) => {
+                response.redirect('admin-promociones');
+            }).catch(err => {
+                console.log(err);
+            });
+    }
+}
 
 exports.getAdminUsuarios = (request, response, next) => {
     request.session.errorAgregarUsuario = undefined;

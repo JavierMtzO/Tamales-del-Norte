@@ -21,5 +21,18 @@ module.exports = class nuevaDistribucion {
     static fetchAll() {
         return db.execute('SELECT * FROM distribucion');
     }
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM distribucion WHERE idDistribucion = ?', [id]);
+    }
+    static update(diaDeEntrega, horaInicioEntrega, horaFinalEntrega, id) {
+        return db.execute('UPDATE distribucion SET diaDeEntrega = ?, horaInicioEntrega = ?, horaFinalEntrega = ? WHERE idDistribucion = ?',
+            [diaDeEntrega, horaInicioEntrega, horaFinalEntrega, id]
+        );
+    }
+    static delete(id) {
+        return db.execute('DELETE FROM distribucion WHERE idDistribucion = ?',
+            [id]
+        );
+    }
 
 }

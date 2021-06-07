@@ -52,9 +52,9 @@
                         href="/admin-productos">Productos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-distribucion">Distribución</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                        href="/admin-promociones">Promociones</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
+                        href="/admin-promociones">Promociones</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-usuarios">Usuarios</a>
                     <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
                         href="/logout">
@@ -65,23 +65,53 @@
 
             <!-- Page content-->
             <div style="padding: 2%;" class="container">
-                <div class="p-3">
-                    <form action='admin-usuarios' method='POST'>
+                <h3 class="text-center m-3"> Promoción: <%= promocion.idPromocion%></h3>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-md-12 mb-4">
+                        <!--Card-->
+                        <div class="card p-3">
+                            <div class='text-right'>
+                                <form
+                                    onSubmit="if(!confirm('¿Está seguro/a que quiere borrar esta promoción?')){return false;} "
+                                    action='admin-editar-promociones' method='POST' class="">
+                                    <button class='btn btn-danger btn-sm' type='submit' name='eliminar'
+                                        value='Eliminar'>Eliminar promoción</button>
+                                </form>
+                            </div>
+                            <!--Card content-->
+                            <!--Grid row-->
+                            <form
+                                onSubmit="if(!confirm('¿Está seguro/a que quiere actualizar esta promoción?')){return false;} "
+                                action='admin-editar-promociones' method='POST'>
+                                <div class="row">
+                                    <div class="md-form mb-3">
+                                        <!--lastName-->
+                                        <div class="md-form">
+                                            <label for="descripcion" class="">Descripción</label>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control"
+                                                value="<%= promocion.descripcion%>">
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+                                </div>
+                                <!--Grid row-->
+                                <!--Grid row-->
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-12 mb-4 pt-4">
 
-                        <button class='btn btn-success btn-sm' type='submit' name='agregarUsuario' value='true'>
-                            Agregar Nuevo Usuario
-                        </button>
+                                        <button class='btn btn-success btn-md' type='submit' name='actualizar'
+                                            value='true'>Actualizar promoción</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--/.Card-->
+                    </div>
+
                 </div>
-                </form>
-                <table id="myTable" class="table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Correo electrónico</th>
-                        </tr>
-                    </thead>
-                </table>
             </div>
         </div>
     </div>
@@ -106,21 +136,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script>
-        var data = [
-        <% for (let admin of admins) {%>
-            [
-                "<%= admin.nombre%>",
-                "<%= admin.apellidos%>",
-                "<%= admin.correoElectronico%>"
-            ], <% } %>
-        ];
+    <!-- <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <!-- <script>
         $(document).ready(function () {
-            $('#myTable').DataTable({ data: data });
+            $('#myTable').DataTable();
         });
-    </script>
+    </script> --> -->
+
 </body>
 
 </html>

@@ -50,11 +50,11 @@
                         href="/admin-clientes">Clientes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-productos">Productos</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
                         href="/admin-distribucion">Distribución</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-promociones">Promociones</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 active"
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3"
                         href="/admin-usuarios">Usuarios</a>
                     <a class="list-group-item border-top list-group-item-action list-group-item-light p-3"
                         href="/logout">
@@ -69,16 +69,17 @@
                     <form action='admin-usuarios' method='POST'>
 
                         <button class='btn btn-success btn-sm' type='submit' name='agregarUsuario' value='true'>
-                            Agregar Nuevo Usuario
+                            Agregar Nueva Distribución
                         </button>
                 </div>
-                </form>
                 <table id="myTable" class="table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Correo electrónico</th>
+                            <th>Colonia</th>
+                            <th>Día</th>
+                            <th>Rango inicio</th>
+                            <th>Rango final</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                 </table>
@@ -110,11 +111,13 @@
     <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         var data = [
-        <% for (let admin of admins) {%>
+        <% for (let dist of distribuciones) {%>
             [
-                "<%= admin.nombre%>",
-                "<%= admin.apellidos%>",
-                "<%= admin.correoElectronico%>"
+                "<%= dist.nombreDeColonia%>",
+                "<%= dist.diaDeEntrega%>",
+                "<%= dist.horaInicioEntrega%>",
+                "<%= dist.horaFinalEntrega%>",
+                "<form action='admin-distribucion' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarDistribucion' value='<%= dist.idDistribucion%>'>Ver Distribución</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {
