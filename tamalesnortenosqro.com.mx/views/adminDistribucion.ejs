@@ -117,7 +117,7 @@
                 "<%= dist.diaDeEntrega%>",
                 "<%= dist.horaInicioEntrega%>",
                 "<%= dist.horaFinalEntrega%>",
-                "<form action='admin-distribucion' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarDistribucion' value='<%= dist.idDistribucion%>'>Ver Distribución</button></form>"
+                "<form action='admin-distribucion' method='POST'><input type='hidden' name='_csrf' value='<%= csrfToken %>'><button class='btn btn-primary btn-sm' type='submit' name='editarDistribucion' value='<%= dist.idDistribucion%>'>Ver Distribución</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

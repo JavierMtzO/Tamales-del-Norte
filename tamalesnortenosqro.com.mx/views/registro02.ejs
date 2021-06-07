@@ -57,6 +57,7 @@
         <span style="color: red;"> <%- error %></span>
         <% }%>
         <form class="form-group" action="registro02" method="POST">
+            <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
             <div class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
                 <div class="tamales-usuarioNoRegistrado-02-formulario-left">
                     <label for="nombre"> Nombre </label>

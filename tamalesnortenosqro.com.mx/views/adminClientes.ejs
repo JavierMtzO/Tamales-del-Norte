@@ -110,7 +110,7 @@
                 "<%= cliente.apellidos%>",
                 "<%= cliente.nombreDeColonia%>",
                 "$<%= cliente.totalGastado%> pesos",
-                "<form action='admin-clientes' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarCliente' value='<%= cliente.idCliente%>'>Ver Cliente</button></form>"
+                "<form action='admin-clientes' method='POST'><input type='hidden' name='_csrf' value='<%= csrfToken %>'><button class='btn btn-primary btn-sm' type='submit' name='editarCliente' value='<%= cliente.idCliente%>'>Ver Cliente</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

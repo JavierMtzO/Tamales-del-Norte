@@ -39,6 +39,7 @@
     <main class="container">
         <div class="container wow fadeIn">
             <form action="carrito" method="POST">
+                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                 <input class="btn btn-danger btn-sm m-3" type="submit" name="cancelar" value="Cancelar pedido">
                 <div class="row">
                     <!--Grid column-->

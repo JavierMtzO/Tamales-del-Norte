@@ -74,6 +74,7 @@
                             <form
                                 onSubmit="if(!confirm('¿Está seguro/a que quiere borrar esta distribución?')){return false;}"
                                 action='admin-editar-distribucion' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <div class='text-right'>
                                     <button class='btn btn-danger btn-sm m-4 text-right' type='submit' name='eliminar'
                                         value='Eliminar'>
@@ -82,6 +83,7 @@
                                 </div>
                             </form>
                             <form action='admin-editar-distribucion' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <div
                                     class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
                                     <div class="tamales-usuarioNoRegistrado-02-formulario-left">

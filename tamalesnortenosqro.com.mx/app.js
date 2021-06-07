@@ -10,6 +10,11 @@ const session = require('express-session');
 
 const multer = require('multer');
 
+const csrf = require('csurf');
+const csrfProtection = csrf();
+
+const csrfMiddleware = require('./util/csrf.js');
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -47,6 +52,8 @@ const fileStorage = multer.diskStorage({
 app.use(multer({ storage: fileStorage }).single('imagen'));
 
 //Middleware
+app.use(csrfProtection);
+app.use(csrfMiddleware);
 
 app.use('/', rutasTamales);
 app.use('/registro', rutasTamales);

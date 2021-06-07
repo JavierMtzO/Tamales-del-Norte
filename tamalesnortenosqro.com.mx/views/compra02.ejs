@@ -42,6 +42,7 @@
 
     <div class="container pt-3 text-center tamales-compra02 tamales-productos">
         <form action="compra02" method="POST">
+            <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
             <input class="btn btn-danger btn-sm m-3 float-right" type="submit" name="cancelar" value="Cancelar">
             <h1 class="tamales-compra02-titulo">Seleccione el número de productos que desea comprar</h1>
             <% if (error !== false) { %>

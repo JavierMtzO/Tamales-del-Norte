@@ -67,7 +67,7 @@
             <div style="padding: 2%;" class="container">
                 <div class="p-3">
                     <form action='admin-usuarios' method='POST'>
-
+                        <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                         <button class='btn btn-success btn-sm' type='submit' name='agregarUsuario' value='true'>
                             Agregar Nuevo Usuario
                         </button>

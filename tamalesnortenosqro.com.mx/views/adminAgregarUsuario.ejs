@@ -72,6 +72,7 @@
                 </div>
                 <% }%>
                 <form action='admin-agregar-usuarios' method='POST'>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <div
                         class="d-flex justify-content-around align-items-center tamales-usuarioNoRegistrado-02-formulario">
                         <div class="tamales-usuarioNoRegistrado-02-formulario-left">

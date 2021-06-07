@@ -84,6 +84,7 @@
                                     </div>
                                 </div>
                                 <form class="col-md-6 mb-2" action='admin-editar-pedidos' method='POST'>
+                                    <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
 
                                     <div class="">
                                         <label for="Estatus" class="">Estatus del pedido</label>
@@ -171,6 +172,7 @@
                             <form
                                 onSubmit="if(!confirm('¿Está seguro/a que quiere borrar este pedido?')){return false;} "
                                 action='admin-editar-pedidos' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <button class='btn btn-danger btn-md' type='submit' name='eliminar'
                                     value='Eliminar'>Eliminar pedido</button>
                             </form>

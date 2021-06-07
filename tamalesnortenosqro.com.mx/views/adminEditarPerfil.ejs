@@ -90,6 +90,7 @@
                 </div>
                 <form onSubmit="if(!confirm('¿Está seguro/a que quiere cambiar su contraseña?')){return false;} "
                     action='admin-editar-perfil' method='POST'>
+                    <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                     <div class='text-center mt-4'>
                         <% if (error !== false) { %>
                         <span style="color: red; text-align: center;"> <%- error %></span>

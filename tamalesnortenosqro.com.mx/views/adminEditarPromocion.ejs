@@ -75,6 +75,7 @@
                                 <form
                                     onSubmit="if(!confirm('¿Está seguro/a que quiere borrar esta promoción?')){return false;} "
                                     action='admin-editar-promociones' method='POST' class="">
+                                    <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                     <button class='btn btn-danger btn-sm' type='submit' name='eliminar'
                                         value='Eliminar'>Eliminar promoción</button>
                                 </form>
@@ -84,6 +85,7 @@
                             <form
                                 onSubmit="if(!confirm('¿Está seguro/a que quiere actualizar esta promoción?')){return false;} "
                                 action='admin-editar-promociones' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <div class="row">
                                     <div class="md-form mb-3">
                                         <!--lastName-->

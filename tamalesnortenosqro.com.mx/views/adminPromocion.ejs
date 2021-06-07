@@ -106,7 +106,7 @@
             [
                 "<%= promocion.idPromocion%>",
                 "<%= promocion.descripcion%>",
-                "<form action='admin-promociones' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarPromocion' value='<%= promocion.idPromocion%>'>Ver Promoción</button></form>"
+                "<form action='admin-promociones' method='POST'><input type='hidden' name='_csrf' value='<%= csrfToken %>'><button class='btn btn-primary btn-sm' type='submit' name='editarPromocion' value='<%= promocion.idPromocion%>'>Ver Promoción</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

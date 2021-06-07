@@ -76,6 +76,7 @@
                             <form
                                 onSubmit="if(!confirm('¿Está seguro/a que quiere actualizar este producto?')){return false;} "
                                 action='admin-editar-productos' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <div class="row">
                                     <!--Grid column-->
                                     <div class="col-md-6 mb-2">
@@ -120,6 +121,7 @@
                             <form
                                 onSubmit="if(!confirm('¿Está seguro/a que quiere borrar este producto?')){return false;} "
                                 action='admin-editar-productos' method='POST'>
+                                <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                                 <button class='btn btn-danger btn-md' type='submit' name='eliminar'
                                     value='Eliminar'>Eliminar producto</button>
                             </form>

@@ -63,6 +63,7 @@
             </div>
             <div class="tamales-compra01-botones">
                 <form action="compra01" method="POST">
+                    <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                     <input class="btn btn-danger btn-lg" type="submit" name="cancelar" value="Rechazar">
                     <input class="btn btn-success btn-lg" type="submit" name="aceptar" value="Aceptar">
                 </form>

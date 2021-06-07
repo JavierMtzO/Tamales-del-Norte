@@ -117,7 +117,7 @@
                 "$<%= producto.precio%> pesos",
                 "<%= producto.descripcion%>",
                 "<%= producto.ventas%>",
-                "<form action='admin-productos' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editarProducto' value='<%= producto.idProducto%>'>Ver Producto</button></form>"
+                "<form action='admin-productos' method='POST'><input type='hidden' name='_csrf' value='<%= csrfToken %>'><button class='btn btn-primary btn-sm' type='submit' name='editarProducto' value='<%= producto.idProducto%>'>Ver Producto</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

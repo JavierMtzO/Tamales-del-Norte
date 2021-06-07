@@ -119,7 +119,7 @@
                 "<%= pedido.estatus%>",
                 "<%= pedido.cantidadTotal%>",
                 "$<%= pedido.costoTotal%> pesos",
-                "<form action='admin-pedidos' method='POST'><button class='btn btn-primary btn-sm' type='submit' name='editar' value='<%= pedido.idPedido%>'>Ver Pedido</button></form>"
+                "<form action='admin-pedidos' method='POST'><input type='hidden' name='_csrf' value='<%= csrfToken %>'><button class='btn btn-primary btn-sm' type='submit' name='editar' value='<%= pedido.idPedido%>'>Ver Pedido</button></form>"
             ], <% } %>
         ];
         $(document).ready(function () {

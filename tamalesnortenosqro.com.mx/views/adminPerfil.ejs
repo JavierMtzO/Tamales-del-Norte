@@ -89,6 +89,7 @@
                     </div>
                 </div>
                 <form action='admin-perfil' method='POST'>
+                    <input type='hidden' name='_csrf' value='<%= csrfToken %>'>
                     <div class='text-center'>
                         <button class='btn btn-primary btn-md m-4 text-center' type='submit' name='actualizar'
                             value='true'>
