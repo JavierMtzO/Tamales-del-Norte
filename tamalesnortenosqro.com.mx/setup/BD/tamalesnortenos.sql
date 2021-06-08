@@ -3,19 +3,45 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 02, 2021 at 02:44 PM
+-- Generation Time: Jun 07, 2021 at 01:18 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 --
 -- Database: `tamalesnortenos`
 --
+
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `idAdmin` int(11) NOT NULL,
+  `nombre` varchar(30) DEFAULT NULL,
+  `apellidos` varchar(60) DEFAULT NULL,
+  `correoElectronico` varchar(100) DEFAULT NULL,
+  `password` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`idAdmin`, `nombre`, `apellidos`, `correoElectronico`, `password`) VALUES
+(51, 'Javier', 'Martinez', 'javier@icloud.com', '$2a$12$Yj7DzowrzEP8F.5LEU.kqO7dVkCt60A8bmvGt/rqTGH5VgJu4hFaG'),
+(52, 'Aldomar', 'Ramírez', 'aldomar.rm@gmail.com', '$2a$12$8c5pB8WmwLPvMmwT2Y869.X.I1PoI4UNk5hjO9ggVWa6vfkvecYTG');
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `cliente`
 --
+
 CREATE TABLE `cliente` (
   `idCliente` int(11) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
@@ -23,44 +49,19 @@ CREATE TABLE `cliente` (
   `direccion` varchar(80) DEFAULT NULL,
   `correoElectronico` varchar(100) DEFAULT NULL,
   `referenciaDomicilio` varchar(200) DEFAULT NULL,
-  `telefono` varchar(12) DEFAULT NULL,
+  `telefono` varchar(30) DEFAULT NULL,
   `idDistribucion` int(11) NOT NULL,
   `password` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Dumping data for table `cliente`
 --
-INSERT INTO `cliente` (`idCliente`, `nombre`, `apellidos`, `direccion`, `correoElectronico`, `referenciaDomicilio`, `telefono`, `idDistribucion`, `password`) VALUES
-(1600, 'Eduardo', 'Blanco', 'Av. Industrias 403', 'Arbol de naranjas en la entrada', 'blanco@gmail.com', '4425998745\'', 8384, 'hola123'),
-(1601, 'Eva', 'Espinoza', 'Himlaya 501', 'Al lado de un dentista', 'espinoza@gmail.com', '4425874126', 8385, 'hola123'),
-(1602, 'Gemma', 'Frias', 'Constitucion 420', 'Atras del HEB', 'frias@gmail.com', '4425896354', 8386, 'hola123'),
-(1603, 'Pablo', 'Farre', 'Av. Juarez 60', 'Casa rosa', 'farre@gmail.com', '4425893358', 8387, 'hola123'),
-(1604, 'Samira', 'Llano', 'Av. Lopez Mateos 59', 'Casa con un domo', 'llano@gmail.com', '4425896542', 8388, 'hola123'),
-(1605, 'Angelica', 'Ripol', 'Emiliano Zapata 83', 'Al lado de una pasteleria', 'ripol@gmail.com', '4425874569', 8389, 'hola123'),
-(1606, 'Andrea', 'Zaragoza', '5 de Mayo 852', 'Puerta roja con negro', 'zaragoza@gmail.com', '4425896325', 8390, 'hola123'),
-(1613, 'Javier', 'Martinez', 'Av Eugenio Garza Sada 628', 'javier@itesm.mx', 'Enfrente al Tec de Monterrey', '4499048658', 8384, '$2a$12$0/4ILwOUfk.Wes.ZYbK77uZJlolmt.czDGMEcC8pCrdVqsfzlH6/y'),
-(1615, 'Aldomar', 'Ramirez', '19 Pond street', 'aldomar@itesm.mx', 'Portón blanco', '4429587468', 8391, '$2a$12$CLlZWcUOeSe1aj/vrqEn3udu7QadjovsBKzi41SQP7wxHtnnPwlj2');
--- --------------------------------------------------------
---
--- Table structure for table `descuento`
---
-CREATE TABLE `descuento` (
-  `idDescuento` int(11) NOT NULL,
-  `descripcion` varchar(200) DEFAULT NULL,
-  `Porcentaje` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
---
--- Dumping data for table `descuento`
---
 
-INSERT INTO `descuento` (`idDescuento`, `descripcion`, `Porcentaje`) VALUES
-(10501, '15 porciento de descuento\'', 15),
-(10502, '15 porciento de descuento\'', 15),
-(10503, '15 porciento de descuento\'', 15),
-(10504, '15 porciento de descuento\'', 15),
-(10505, '15 porciento de descuento\'', 15),
-(10506, '15 porciento de descuento\'', 15),
-(10507, '15 porciento de descuento\'', 15);
+INSERT INTO `cliente` (`idCliente`, `nombre`, `apellidos`, `direccion`, `correoElectronico`, `referenciaDomicilio`, `telefono`, `idDistribucion`, `password`) VALUES
+(2001, 'Javier', 'Martinez', 'Av Eugenio Garza Sada 628', 'javier@itesm.mx', 'Enfrente al Tec de Monterrey', '4499048658', 8387, '$2a$12$D1VoemwXKmGG/l5N95b57eMg1jL1EIiiykM82Dr17oyPgw9/MRpkK'),
+(2002, 'Aldomar', 'Ramirez', '19 Pond street', 'aldomar@itesm.mx', 'Portón blanco', '4429587468', 8391, '$2a$12$CLlZWcUOeSe1aj/vrqEn3udu7QadjovsBKzi41SQP7wxHtnnPwlj2'),
+(2003, 'Selene', 'Morales Martin del Campo', '\"Blvd. Chichimeco 2009 San Antonio de los Horcones 20900 Jesus María, Ags.\"', 'selene@itesm.mx', 'Caseta de departamentos azúl', '+52442789034', 8387, '$2a$12$2P1bqLNmxuFH.ZFVDZuZa.1R/jMg0njceBmhO4WscViZXiBpUKl.C');
 
 -- --------------------------------------------------------
 
@@ -87,13 +88,13 @@ INSERT INTO `distribucion` (`idDistribucion`, `diaDeEntrega`, `nombreDeColonia`,
 (8387, 'Sábado', 'Juriquilla', '17:00:00', '19:00:00'),
 (8388, 'Jueves', 'La Vista', '17:00:00', '19:00:00'),
 (8389, 'Viernes', 'Sonterra', '17:00:00', '19:00:00'),
-(8390, 'Viernes', 'Balvanegra', '17:00:00', '19:00:00'),
+(8390, 'Miercoles', 'Balvanegra', '20:00:00', '22:00:00'),
 (8391, 'Miercoles', 'Zibata', '17:00:00', '19:00:00'),
 (8392, 'Jueves', 'Zakia', '17:00:00', '19:00:00'),
 (8393, 'Viernes', 'Vista Real', '17:00:00', '19:00:00'),
 (8394, 'Viernes', 'Mirador', '17:00:00', '19:00:00'),
 (8395, 'Viernes', 'Milenio', '17:00:00', '19:00:00'),
-(8396, 'Lunes', 'Campanario', '19:00:00', '20:00:00'),
+(8396, 'Jueves', 'Campanario', '20:00:00', '22:00:00'),
 (8397, 'Miercoles', 'Cimatario', '17:00:00', '19:00:00');
 
 -- --------------------------------------------------------
@@ -104,7 +105,6 @@ INSERT INTO `distribucion` (`idDistribucion`, `diaDeEntrega`, `nombreDeColonia`,
 
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL,
-  `etiqueta` int(11) DEFAULT NULL,
   `diaEntrega` varchar(200) DEFAULT NULL,
   `estatus` varchar(50) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
@@ -112,25 +112,18 @@ CREATE TABLE `pedido` (
   `cantidadTotal` int(11) DEFAULT NULL,
   `costoTotal` float DEFAULT NULL,
   `idCliente` int(11) DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idPromocion` int(11) DEFAULT NULL
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pedido`
 --
 
-INSERT INTO `pedido` (`idPedido`, `etiqueta`, `diaEntrega`, `estatus`, `descripcion`, `tipoDeEntrega`, `cantidadTotal`, `costoTotal`, `idCliente`, `fecha`, `idPromocion`) VALUES
-(23, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'frijoles: 10, dulce: 10', 'domicilio', 20, 390, 1613, '2021-05-30 21:28:00', NULL),
-(24, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'rajas: 10, dulce: 240', 'domicilio', 250, 4300, 1613, '2021-05-30 21:28:25', NULL),
-(26, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, rajas: 20, frijoles: 10', 'domicilio', 40, 730, 1613, '2021-06-02 04:58:20', NULL),
-(27, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 20', 'domicilio', 40, 730, 1613, '2021-06-02 05:00:29', NULL),
-(28, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 20', 'domicilio', 30, 560, 1613, '2021-06-02 05:07:43', NULL),
-(29, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 20', 'domicilio', 40, 730, 1613, '2021-06-02 05:10:52', NULL),
-(32, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'colorado: 10, chicharron: 10, frijoles: 10', 'domicilio', 30, 560, 1613, '2021-06-02 05:12:51', NULL),
-(36, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10, dulce: 10', 'domicilio', 30, 560, 1613, '2021-06-02 06:09:12', NULL),
-(37, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'colorado: 10, verde: 20', 'domicilio', 30, 560, 1613, '2021-06-02 14:36:55', NULL),
-(38, NULL, 'Viernes de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, frijoles: 10', 'domicilio', 20, 390, 1613, '2021-06-02 14:39:10', NULL);
+INSERT INTO `pedido` (`idPedido`, `diaEntrega`, `estatus`, `descripcion`, `tipoDeEntrega`, `cantidadTotal`, `costoTotal`, `idCliente`, `fecha`) VALUES
+(10001, 'Sábado de 17:00:00 a 19:00:00', 'En espera de pago', 'colorado: 20, verde: 15, chicharron: 15', 'domicilio', 50, 900, 2003, '2021-06-07 10:28:32'),
+(10002, 'Sábado de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 20, rajas: 10, frijoles: 5, dulce: 10', 'domicilio', 45, 815, 2001, '2021-06-07 10:28:57'),
+(10003, 'Miercoles de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 15, rajas: 10, dulce: 15', 'sucursal', 40, 680, 2002, '2021-06-07 10:29:23'),
+(10005, 'Sábado de 17:00:00 a 19:00:00', 'En espera de pago', 'verde: 10, rajas: 10', 'domicilio', 20, 390, 2001, '2021-06-07 10:31:24');
 
 -- --------------------------------------------------------
 
@@ -150,40 +143,19 @@ CREATE TABLE `pedidoproducto` (
 --
 
 INSERT INTO `pedidoproducto` (`idProducto`, `idPedido`, `fechaPedido`, `cantidadPorProducto`) VALUES
-(1, 15, '2021-05-30 21:09:27', 40),
-(1, 32, '2021-06-02 05:12:55', 10),
-(1, 37, '2021-06-02 14:37:00', 10),
-(2, 10, '2021-05-30 21:06:32', 15),
-(2, 12, '2021-05-30 21:08:00', 10),
-(2, 22, '2021-05-30 21:24:40', 10),
-(2, 26, '2021-06-02 04:58:24', 10),
-(2, 27, '2021-06-02 05:00:34', 10),
-(2, 28, '2021-06-02 05:07:46', 10),
-(2, 29, '2021-06-02 05:10:56', 10),
-(2, 36, '2021-06-02 06:09:16', 10),
-(2, 37, '2021-06-02 14:37:00', 20),
-(2, 38, '2021-06-02 14:39:13', 10),
-(3, 12, '2021-05-30 21:08:00', 25),
-(3, 24, '2021-05-30 21:28:28', 10),
-(3, 26, '2021-06-02 04:58:24', 20),
-(4, 32, '2021-06-02 05:12:55', 10),
-(5, 10, '2021-05-30 21:06:32', 10),
-(5, 22, '2021-05-30 21:24:40', 10),
-(5, 23, '2021-05-30 21:28:06', 10),
-(5, 25, '2021-06-01 16:08:44', 10),
-(5, 26, '2021-06-02 04:58:24', 10),
-(5, 27, '2021-06-02 05:00:34', 10),
-(5, 28, '2021-06-02 05:07:46', 20),
-(5, 29, '2021-06-02 05:10:56', 10),
-(5, 32, '2021-06-02 05:12:55', 10),
-(5, 36, '2021-06-02 06:09:16', 10),
-(5, 38, '2021-06-02 14:39:13', 10),
-(6, 23, '2021-05-30 21:28:06', 10),
-(6, 24, '2021-05-30 21:28:28', 240),
-(6, 25, '2021-06-01 16:08:44', 10),
-(6, 27, '2021-06-02 05:00:34', 20),
-(6, 29, '2021-06-02 05:10:56', 20),
-(6, 36, '2021-06-02 06:09:16', 10);
+(1, 10001, '2021-06-07 10:28:38', 20),
+(2, 10001, '2021-06-07 10:28:38', 15),
+(2, 10002, '2021-06-07 10:29:05', 20),
+(2, 10003, '2021-06-07 10:29:30', 15),
+(2, 10005, '2021-06-07 10:31:24', 10),
+(3, 10002, '2021-06-07 10:29:05', 10),
+(3, 10003, '2021-06-07 10:29:30', 10),
+(3, 10005, '2021-06-07 10:31:24', 10),
+(4, 10001, '2021-06-07 10:28:38', 15),
+(5, 10002, '2021-06-07 10:29:05', 5),
+(6, 10002, '2021-06-07 10:29:05', 10),
+(6, 10003, '2021-06-07 10:29:30', 15),
+(9, 10001, '2021-06-07 12:29:09', 0);
 
 -- --------------------------------------------------------
 
@@ -195,7 +167,6 @@ CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
   `nombreProducto` varchar(80) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL,
-  `existencia` int(11) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `imagenProducto` varchar(200) DEFAULT NULL,
   `sku` varchar(20) DEFAULT NULL
@@ -205,13 +176,13 @@ CREATE TABLE `producto` (
 -- Dumping data for table `producto`
 --
 
-INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precio`, `existencia`, `descripcion`, `imagenProducto`, `sku`) VALUES
-(1, 'Colorado', 17, 10, 'Masa hidratada con un ligero color rojizo relleno de carne de cerdo desmenuzada guisada con chile guajillo', 'img/tamales-sabor-4.png', 'colorado'),
-(2, 'Verde de pollo', 17, 10, 'Masa delgada, rellena con pollo desmenuzado en salsa verde', 'img/tamales-sabor-2.png', 'verde'),
-(3, 'Rajas con queso', 17, 10, 'Masa rellena de rajas en escabeche con queso panela', 'img/tamales-sabor-5.png', 'rajas'),
-(4, 'Chicharron', 17, 10, 'Tamal de masa muy delgada relleno de un guiso de chicharrón tipo carnitas', 'img/tamales-sabor-3.png', 'chicharron'),
-(5, 'Frijoles norteños', 17, 10, 'Masa delgada rellena de frijoles norteños (guisado con chile guajillo) y queso panela', 'img/tamales-sabor-6.png', 'frijoles'),
-(6, 'Dulce', 17, 10, 'Tamal con pasas, coco y naranja, sin colorantes', 'img/tamales-sabor-1.png', 'dulce');
+INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precio`, `descripcion`, `imagenProducto`, `sku`) VALUES
+(1, 'Colorado', 17, 'Masa hidratada con un ligero color rojizo relleno de carne de cerdo desmenuzada guisada con chile guajillo', 'img/tamales-sabor-4.png', 'colorado'),
+(2, 'Verde de pollo  ', 17, 'Masa delgada, rellena con pollo desmenuzado en salsa verde', 'img/tamales-sabor-2.png', 'verde'),
+(3, 'Rajas con queso', 17, 'Masa rellena de rajas en escabeche con queso panela', 'img/tamales-sabor-5.png', 'rajas'),
+(4, 'Chicharrón  ', 17, 'Tamal de masa muy delgada relleno de un guiso de chicharrón tipo migas', 'img/tamales-sabor-3.png', 'chicharron'),
+(5, 'Frijoles norteños', 17, 'Masa delgada rellena de frijoles norteños (guisado con chile guajillo) y queso panela', 'img/tamales-sabor-6.png', 'frijoles'),
+(6, 'Dulce', 17, 'Tamal con pasas, coco y naranja, sin colorantes', 'img/tamales-sabor-1.png', 'dulce');
 
 -- --------------------------------------------------------
 
@@ -222,23 +193,27 @@ INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precio`, `existencia`, 
 CREATE TABLE `promocion` (
   `idPromocion` int(11) NOT NULL,
   `descripcion` varchar(80) DEFAULT NULL,
-  `fechaInicio` date DEFAULT NULL,
-  `fechaFinal` date DEFAULT NULL,
-  `imagenPromocion` varchar(200) DEFAULT NULL,
-  `idDescuento` int(11) NOT NULL
+  `imagenPromocion` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `promocion`
 --
 
-INSERT INTO `promocion` (`idPromocion`, `descripcion`, `fechaInicio`, `fechaFinal`, `imagenPromocion`, `idDescuento`) VALUES
-(2001, ' 2 x 1 en tamales dulces', '2021-05-20', '2021-06-20', 'img/tamales-promocion-1.jpg', 10501),
-(2002, ' 3 x 1 en tamales de rajas', '2021-05-20', '2021-06-20', 'img/tamales-promocion-2.jpg', 10501);
+INSERT INTO `promocion` (`idPromocion`, `descripcion`, `imagenPromocion`) VALUES
+(2001, 'En tu primer compra en línea. ¡Llévate un tamal gratis!', 'img/tamales-promocion-2.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`idAdmin`),
+  ADD UNIQUE KEY `idAdmin` (`idAdmin`),
+  ADD UNIQUE KEY `correoElectronico` (`correoElectronico`);
 
 --
 -- Indexes for table `cliente`
@@ -248,12 +223,6 @@ ALTER TABLE `cliente`
   ADD UNIQUE KEY `idCliente` (`idCliente`),
   ADD UNIQUE KEY `correoElectronico` (`correoElectronico`),
   ADD KEY `idDistribucion` (`idDistribucion`);
-
---
--- Indexes for table `descuento`
---
-ALTER TABLE `descuento`
-  ADD PRIMARY KEY (`idDescuento`);
 
 --
 -- Indexes for table `distribucion`
@@ -266,7 +235,7 @@ ALTER TABLE `distribucion`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`idPedido`),
-  ADD KEY `idPromocion` (`idPromocion`),
+  ADD UNIQUE KEY `idPedido` (`idPedido`),
   ADD KEY `idCliente` (`idCliente`);
 
 --
@@ -281,23 +250,31 @@ ALTER TABLE `pedidoproducto`
 -- Indexes for table `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`idProducto`);
+  ADD PRIMARY KEY (`idProducto`),
+  ADD UNIQUE KEY `idProducto` (`idProducto`);
 
 --
 -- Indexes for table `promocion`
 --
 ALTER TABLE `promocion`
-  ADD PRIMARY KEY (`idPromocion`);
+  ADD PRIMARY KEY (`idPromocion`),
+  ADD UNIQUE KEY `idPromocion` (`idPromocion`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1616;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2004;
 
 --
 -- AUTO_INCREMENT for table `distribucion`
@@ -309,10 +286,16 @@ ALTER TABLE `distribucion`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `idPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10006;
+
+--
+-- AUTO_INCREMENT for table `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
+  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2002;
